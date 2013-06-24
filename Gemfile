@@ -14,6 +14,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rspec'
   gem 'pry'
+  gem 'better_errors'
   gem 'binding_of_caller'
 end
 
@@ -31,3 +32,5 @@ gem 'high_voltage'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'omniauth'
+gem 'omniauth-soundcloud', '~> 1.0.0'
+gem 'figaro'
