@@ -23,3 +23,6 @@ end
 gem 'unicorn'
 
 gem 'high_voltage'
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'omniauth'
