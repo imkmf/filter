@@ -12,8 +12,13 @@ gem 'jbuilder', '~> 1.2'
 group :development do
   gem 'guard'
   gem 'guard-bundler'
+  gem 'guard-rspec'
   gem 'pry'
   gem 'binding_of_caller'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
 end
 
 group :doc do
