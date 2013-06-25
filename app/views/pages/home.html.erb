@@ -1,3 +1,4 @@
+<%= current_user %>
 <div class="jumbotron">
   <h1>
     <span id="soundcloud">Soundcloud</span> + 
@@ -5,7 +6,11 @@
     <i id="heart" class="big-icon icon-heart-empty"></i>
   </h1>
   <p class="lead">Podcasts made easy. Simply sign-in with Soundcloud and get started making a publishable podcast within seconds.</p>
-  <a class="soundcloud-button" href="/auth/soundcloud"><%= image_tag "soundcloud-button.png" %></a>
+  <% if current_user %>
+    <%= link_to "signout", signout_path %>
+  <% else %>
+    <a class="soundcloud-button" href="/auth/soundcloud"><%= image_tag "soundcloud-button.png" %></a>
+  <% end %>
 </div>
 
 <hr>
