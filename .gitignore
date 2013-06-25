@@ -17,6 +17,7 @@
 
 # Vim undo files
 *.un~
+*.swp
 
 # Ignore application configuration
 /config/application.yml
