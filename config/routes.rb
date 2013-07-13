@@ -3,5 +3,6 @@ Filter::Application.routes.draw do
   get "utilities/hello"
   get '/auth/:provider/:callback', to: 'sessions#create'
   get "/signout" => "sessions#destroy", :as => :signout
-  resources :podcasts
+  resources :podcasts, except: [:index]
+  get "/my_podcast", to: 'podcasts#show'
 end
