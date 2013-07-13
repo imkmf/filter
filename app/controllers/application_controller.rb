@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:user_id] && User.find_by_id(session[:user_id])
   end
   helper_method :current_user
+
+  def api
+    if current_user
+      @api ||= Soundcloud::API.new(current_user.token)
+    end
+  end
+  helper_method :api
 end
