@@ -1,0 +1,19 @@
+<h2>Subscribe to Filter to get:</h2>
+
+<h3>- Unlimited episodes for your podcast</h3>
+<h3>- Auto-updating upon new Soundcloud uploads</h3>
+
+<h3>Try Filter for a week, free of charge.</h3>
+
+<%= form_tag subscriptions_path do %>
+  <article>
+    <label class="amount">
+      <span>Amount: $8.00</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+          data-key="<%= Figaro.env.stripe_key %>"
+          data-description="Unlimited plan to Filter"
+          data-amount="800"></script>
+<% end %>

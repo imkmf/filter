@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_one :podcast
-  has_many :tracks, through: :podcast
+  has_many :episodes, through: :podcast
+  attr_accessor :limit
 
   def to_s
     "#{ name }"
@@ -14,6 +15,14 @@ class User < ActiveRecord::Base
       user = User.create name: info["name"], provider: provider, uid: uid, avatar_url: info["image"], token: auth_hash["credentials"]["token"]
     else
       user
+    end
+  end
+
+  def limit
+    if self.subscribed
+      nil
+    else
+      5
     end
   end
 end

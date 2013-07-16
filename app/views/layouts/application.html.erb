@@ -12,12 +12,19 @@
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Help</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><%= link_to "Account", edit_user_path(current_user) %></li>
+          <% if current_user %>
+            <% unless current_user.subscribed %>
+              <li><%= link_to "Upgrade", new_subscription_path %></li>
+            <% end %>
+            <li><%= link_to "Signout", signout_path %></li>
+          <% end %>
         </ul>
         <h3 class="muted">Filter</h3>
       </div>
 
       <hr>
+      <%= render partial: "shared/flash_messages", flash: flash %>
       <%= yield %>
       <hr>
 

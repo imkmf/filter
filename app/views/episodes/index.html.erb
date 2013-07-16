@@ -1,0 +1,33 @@
+<h2>Episodes for <%= @podcast.name %>:</h2>
+
+<% if @episodes.empty? %>
+  <h3 class="alert alert-error">Your podcast has no current episodes.</h3>
+<% else %>
+  <% @episodes.each do |episode| %>
+    <h4><%= episode.name %></h4>
+    <p><%# episode.description %></p>
+    <p><%= image_tag episode.cover %></p>
+    <p><%= link_to "Download link", episode.link %></p>
+    <p><%= link_to "Remove from podcast", episode_path(episode), confirm: "Are you sure?", method: :delete %></p>
+  <% end %>
+<% end %>
+
+<hr>
+
+<h3>Your Soundcloud:</h3>
+<% @soundcloud_episodes.each do |sc_episode| %>
+  <div class="sc_episode">
+    <p class="title"><%= sc_episode['title'] %></p>
+    <p class="description"><%= sc_episode['description'] %></p>
+    <p class="cover"><%= image_tag sc_episode['artwork_url'] %></p>
+    <% if Episode.find_by_sc_id(sc_episode['id']) %>
+      <%= button_to "Added", add_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", disabled: true %>
+    <% else %>
+      <%= button_to "Add", add_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary", data: { toggle: "button" } %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="help">
+  <h3>Are there tracks missing? Try making them <a href="http://help.soundcloud.com/customer/portal/articles/243684-can-people-download-my-sounds-"><em>downloadable</em> on your Soundcloud account</a>.</h3>
+</div>

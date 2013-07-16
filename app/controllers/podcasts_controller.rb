@@ -1,6 +1,8 @@
 class PodcastsController < ApplicationController
+  before_filter :authenticate_user!
+
   def show
     @podcast = current_user.podcast
-    @tracks = api.user_tracks(current_user.uid, limit: current_user.limit, filter: 'downloadable')
+    @episodes = current_user.episodes
   end
 end

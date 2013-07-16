@@ -1,13 +1,12 @@
-<%= current_user %>
 <div class="jumbotron">
   <h1>
-    <span id="soundcloud">Soundcloud</span> + 
+    <span id="soundcloud">Soundcloud</span> +
     <span id="itunes">iTunes</span> =
     <i id="heart" class="big-icon icon-heart-empty"></i>
   </h1>
   <p class="lead">Podcasts made easy. Simply sign-in with Soundcloud and get started making a publishable podcast within seconds.</p>
   <% if current_user %>
-    <%= link_to "signout", signout_path %>
+    <%= link_to "Go to my podcasts", my_podcast_path, class: 'btn btn-primary' %>
   <% else %>
     <a class="soundcloud-button" href="/auth/soundcloud"><%= image_tag "soundcloud-button.png" %></a>
   <% end %>
@@ -48,6 +47,7 @@
 
 <div class="row">
   <h2>Filter has two plans: <em>free</em> and <strong>unlimited</strong>.</h4>
+  <h2>Try Filter for a week, free of charge.</h2>
   <br />
   <div class="span3 offset2">
     <h3>Free</h3>
@@ -66,5 +66,4 @@
     </ul>
     <h4>$8/mo</h4>
   </div>
-
 </div>

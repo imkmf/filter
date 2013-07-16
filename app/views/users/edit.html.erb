@@ -1,0 +1,35 @@
+<h3>Signed in as <%= @user.name %></h3>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :email %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+
+<p>Want to change other account information?
+<%= link_to "Edit your account on Soundcloud", "http://soundcloud.com/settings" %></p>
+
+<h3>Your account plan is:
+<% if @user.subscribed %>
+  <em>Unlimited</em></h3>
+  <% if @on_trial %>
+    <h3>Trial period ends:
+  <% else %>
+    <h3>Renew date:
+  <% end %>
+
+  <%= distance_of_time_in_words_to_now(@end_time) %> (<%= @end_time.to_formatted_s(:short) %>)</h3>
+
+  <h3>Your current card information: </h3>
+  <p><strong>Type:</strong> <%= @card.type %></p>
+  <p><strong>Last four digits: </strong> <%= @card.last4 %></p>
+  <p><strong>Expiration date: </strong> <%= "#{ @card.exp_month }/#{ @card.exp_year }" %></p>
+  <%# button_to "Remove this card", remove_card_path, class: "btn btn-warning" %>
+  <%= link_to "Cancel your plan", subscription_path, method: :delete, class: "btn btn-danger" %>
+<% else %>
+  <em>Free</em></h3>
+  <% if @user.stripe_token %>
+    <%= button_to "Reactivate your account", reactivate_subscription_path, class: "btn btn-primary" %>
+  <% else %>
+    <%= link_to "Upgrade your account", new_subscription_path, class: "btn btn-primary" %>
+  <% end %>
+<% end %>

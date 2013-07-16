@@ -8,10 +8,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def api
-    if current_user
-      @api ||= Soundcloud::API.new(current_user.token)
+  def authenticate_user!
+    unless current_user
+      redirect_to root_path, alert: "You must be logged in to perform that action."
     end
+  end
+  helper_method :authenticate_user!
+
+  def api
+    authenticate_user!
+    @api ||= Soundcloud::API.new(current_user.token)
   end
   helper_method :api
 end

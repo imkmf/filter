@@ -1,7 +1,11 @@
 <% if @podcast.recent %>
-  <h1>Welcome to Filter!</h1>
+  <h1>Welcome to Filter <%= "Pro" if current_user.subscribed %>!</h1>
 <% end %>
 
-<% @tracks.each do |track| %>
-  <h3><%= track['title'] %></h3>
+<% if @episodes.empty? %>
+  <h2>You have no episodes currently added to your podcast.</h2>
+  <h2><%= link_to "Add episodes", episodes_path %></h2>
 <% end %>
+<%# @episodes.each do |episode| %>
+  <h3><%# episode['title'] %></h3>
+<%# end %>

@@ -11,23 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130625221022) do
+ActiveRecord::Schema.define(version: 20130716223808) do
+
+  create_table "episodes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "podcast_id"
+    t.string   "name"
+    t.string   "cover"
+    t.string   "link"
+    t.string   "description"
+    t.string   "sc_id"
+  end
+
+  add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id"
 
   create_table "podcasts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "name"
   end
 
   add_index "podcasts", ["user_id"], name: "index_podcasts_on_user_id"
-
-  create_table "tracks", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "podcast_id"
-  end
-
-  add_index "tracks", ["podcast_id"], name: "index_tracks_on_podcast_id"
 
   create_table "users", force: true do |t|
     t.string   "provider"
@@ -38,6 +44,8 @@ ActiveRecord::Schema.define(version: 20130625221022) do
     t.datetime "updated_at"
     t.string   "token"
     t.string   "avatar_url"
+    t.boolean  "subscribed",   default: false
+    t.string   "stripe_token"
   end
 
 end
