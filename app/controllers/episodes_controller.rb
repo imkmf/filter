@@ -1,6 +1,7 @@
 class EpisodesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :get_podcast
+  before_filter :get_episode
 
   def index
     @episodes = @podcast.episodes
@@ -25,15 +26,30 @@ class EpisodesController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @episode.update(episode_params)
+      redirect_to episodes_path, notice: "#{ @episode.name } has been updated."
+    end
+  end
+
   def destroy
-    @episode = Episode.find(params[:id])
     if @episode.destroy
       redirect_to episodes_path, alert: "Episode has been deleted."
     end
   end
 
   private
+  def episode_params
+    params.require(:episode).permit(:name, :description, :link)
+  end
+
   def get_podcast
     @podcast ||= current_user.podcast
+  end
+
+  def get_episode
+    @episode = Episode.find(params[:id]) if params[:id]
   end
 end

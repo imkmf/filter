@@ -9,18 +9,7 @@
   <body>
     <div class="container-narrow">
       <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Help</a></li>
-          <li><%= link_to "Account", edit_user_path(current_user) %></li>
-          <% if current_user %>
-            <% unless current_user.subscribed %>
-              <li><%= link_to "Upgrade", new_subscription_path %></li>
-            <% end %>
-            <li><%= link_to "Signout", signout_path %></li>
-          <% end %>
-        </ul>
-        <h3 class="muted">Filter</h3>
+        <%= render partial: "shared/menu" %>
       </div>
 
       <hr>

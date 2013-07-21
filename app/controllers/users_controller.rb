@@ -4,13 +4,15 @@ class UsersController < ApplicationController
   before_filter :get_user
 
   def edit
-    @customer = Stripe::Customer.retrieve(current_user.stripe_token)
-    @subscription = @customer.subscription
-    if @subscription.current_period_end == @subscription.trial_end
-      @on_trial = true
+    if @user.stripe_token
+      @customer = Stripe::Customer.retrieve(@user.stripe_token)
+      @subscription = @customer.subscription
+      if @subscription.current_period_end == @subscription.trial_end
+        @on_trial = true
+      end
+      @end_time = DateTime.strptime(@subscription.current_period_end.to_s, "%s")
+      @card = @customer.cards.first
     end
-    @end_time = DateTime.strptime(@subscription.current_period_end.to_s, "%s")
-    @card = @customer.cards.first
   end
 
   def update

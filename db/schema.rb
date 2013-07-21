@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130716223808) do
+ActiveRecord::Schema.define(version: 20130721012912) do
 
   create_table "episodes", force: true do |t|
     t.datetime "created_at"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(version: 20130716223808) do
     t.string   "link"
     t.string   "description"
     t.string   "sc_id"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id"
@@ -31,6 +35,11 @@ ActiveRecord::Schema.define(version: 20130716223808) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "name"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "description"
   end
 
   add_index "podcasts", ["user_id"], name: "index_podcasts_on_user_id"

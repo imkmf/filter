@@ -4,7 +4,7 @@
   <h3 class="alert alert-error">Your podcast has no current episodes.</h3>
 <% else %>
   <% @episodes.each do |episode| %>
-    <h4><%= episode.name %></h4>
+    <h4><%= link_to episode.name, edit_episode_path(episode) %></h4>
     <p><%# episode.description %></p>
     <p><%= image_tag episode.cover %></p>
     <p><%= link_to "Download link", episode.link %></p>

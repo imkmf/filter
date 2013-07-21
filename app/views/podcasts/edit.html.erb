@@ -1,0 +1,8 @@
+<h1>Editing podcast</h1>
+
+<%= simple_form_for @podcast do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text %>
+  <%= f.label :cover %>
+  <%= f.file_field :cover %>
+<% end %>

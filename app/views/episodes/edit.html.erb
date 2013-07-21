@@ -1,0 +1,11 @@
+<h1>Editing episode "<%= @episode.name %>"</h1>
+
+<%= simple_form_for @episode do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text %>
+  <%# image_tag episode.cover %>
+  // Paperclip would be nice here
+  <%= f.input :link %>
+  <%= f.button :submit %>
+<% end %>
+

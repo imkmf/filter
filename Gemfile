@@ -37,3 +37,5 @@ gem 'figaro'
 gem 'soundcloud-client'
 gem 'stripe'
 gem 'simple_form'
+gem "paperclip", "~> 3.0"
+gem 'aws-sdk'
