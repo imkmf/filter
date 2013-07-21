@@ -1,5 +1,9 @@
 <ul class="nav nav-pills pull-right">
-  <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
+  <% if current_user %>
+    <li class="<%= 'active' if current_page?(my_podcast_path) %>"><%= link_to "Home", my_podcast_path %></li>
+  <% else %>
+    <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
+  <% end %>
   <li class="<%= 'active' if current_page?(page_path('help')) %>"><%= link_to "Help", page_path('help') %></li>
   <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>"><%= link_to "Account", edit_user_path(current_user) %></li>
   <% if current_user %>

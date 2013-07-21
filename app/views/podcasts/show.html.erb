@@ -2,13 +2,21 @@
   <h1>Welcome to Filter <%= "Pro" if current_user.subscribed %>!</h1>
 <% end %>
 
-<h2><%= link_to "Edit podcast", edit_podcast_path(@podcast) %></h2>
+<%= link_to "Edit podcast", edit_podcast_path(@podcast), class: "btn btn-primary" %>
 
-<% if @episodes.empty? %>
-  <h2>You have no episodes currently added to your podcast.</h2>
-  <h2><%= link_to "Add episodes", episodes_path %></h2>
-<% elsif %>
-  <% @episodes.each do |episode| %>
-    <h3><%= episode.name %></h3>
+<hr>
+
+<h2>Episodes:</h2>
+
+<div class="episodes">
+  <% if @episodes.empty? %>
+    <h2>You have no episodes currently added to your podcast.</h2>
+    <h2><%= link_to "Add episodes", episodes_path %></h2>
+  <% elsif %>
+    <% @episodes.each do |episode| %>
+      <h3><%= episode.name %></h3>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<%= link_to "Add episodes", episodes_path, class: "btn btn-primary" %>

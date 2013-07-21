@@ -7,10 +7,12 @@ class UsersController < ApplicationController
     if @user.stripe_token
       @customer = Stripe::Customer.retrieve(@user.stripe_token)
       @subscription = @customer.subscription
-      if @subscription.current_period_end == @subscription.trial_end
-        @on_trial = true
+      if @subscription
+        if @subscription.current_period_end == @subscription.trial_end
+          @on_trial = true
+        end
+        @end_time = DateTime.strptime(@subscription.current_period_end.to_s, "%s")
       end
-      @end_time = DateTime.strptime(@subscription.current_period_end.to_s, "%s")
       @card = @customer.cards.first
     end
   end
