@@ -39,3 +39,5 @@ gem 'stripe'
 gem 'simple_form'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
+gem 'resque', require: 'resque/server'
+gem 'resque-scheduler', require: 'resque_scheduler'

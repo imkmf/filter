@@ -11,4 +11,5 @@ Filter::Application.routes.draw do
   post "/users/remove_card", to: "subscriptions#remove_card", as: "remove_card"
   post "/subscriptions/reactivate", to: "subscriptions#reactivate", as: "reactivate_subscription"
   post "/episodes/new", to: "episodes#new", as: "add_episode"
+  mount Resque::Server, :at => "/resque"
 end
