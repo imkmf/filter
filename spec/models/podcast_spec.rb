@@ -7,7 +7,6 @@ describe Podcast do
   it "should set the right attributes on init" do
     user = User.new(name: "Kristian")
     podcast = Podcast.create(user: user)
-    podcast.recent == true
     podcast.name.should == "Kristian's podcast"
   end
 
