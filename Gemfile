@@ -22,12 +22,11 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-group :doc do
-  gem 'sdoc', require: false
+group :test do
+  gem 'shoulda-matchers'
 end
 
 gem 'unicorn'
-
 gem 'high_voltage'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'

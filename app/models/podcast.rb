@@ -10,6 +10,10 @@ class Podcast < ActiveRecord::Base
   end
 
   def set_name
-    self.name ||= "#{ user.name }'s podcast"
+    if user
+      self.name ||= "#{ user.name }'s podcast"
+    else
+      self.name ||= "Podcast"
+    end
   end
 end
