@@ -1,5 +1,6 @@
 hi
 ===
 
-`rake resque:scheduler`
 `rake resque:work`
+
+`rake resque:scheduler`

@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'mechanize'
 
 group :development do
   gem 'guard'
@@ -28,7 +29,8 @@ end
 
 gem 'unicorn'
 gem 'high_voltage'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git',
+  branch: '3'
 gem 'font-awesome-rails'
 gem 'omniauth'
 gem 'omniauth-soundcloud', '~> 1.0.0'

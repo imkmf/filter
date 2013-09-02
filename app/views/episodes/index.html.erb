@@ -21,9 +21,9 @@
     <p class="description"><%= sc_episode['description'] %></p>
     <p class="cover"><%= image_tag sc_episode['artwork_url'] %></p>
     <% if Episode.find_by_sc_id(sc_episode['id']) %>
-      <%= button_to "Added", add_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", disabled: true %>
+      <%= link_to "Added", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", disabled: true %>
     <% else %>
-      <%= button_to "Add", add_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary", data: { toggle: "button" } %>
+      <%= link_to "Add", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary" %>
     <% end %>
   </div>
 <% end %>

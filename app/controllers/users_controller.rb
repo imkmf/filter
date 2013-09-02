@@ -33,8 +33,8 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    @correct_user = User.find params[:id]
-    if current_user != @correct_user or @correct_user.nil?
+    @correct_user = User.find_by_id(params[:id])
+    if @correct_user.nil? || current_user != @correct_user
       redirect_to root_path, alert: "You are not permitted to access this page."
     end
   end
