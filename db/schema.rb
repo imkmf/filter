@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130721012912) do
+ActiveRecord::Schema.define(version: 20130915223142) do
+
+  create_table "blacklists", force: true do |t|
+    t.integer  "user_id"
+    t.string   "episodes",   array: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "episodes", force: true do |t|
     t.datetime "created_at"
@@ -21,14 +28,14 @@ ActiveRecord::Schema.define(version: 20130721012912) do
     t.string   "cover"
     t.string   "link"
     t.string   "description"
-    t.string   "sc_id"
+    t.integer  "sc_id"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
   end
 
-  add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id"
+  add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id", using: :btree
 
   create_table "podcasts", force: true do |t|
     t.datetime "created_at"
@@ -42,11 +49,11 @@ ActiveRecord::Schema.define(version: 20130721012912) do
     t.string   "description"
   end
 
-  add_index "podcasts", ["user_id"], name: "index_podcasts_on_user_id"
+  add_index "podcasts", ["user_id"], name: "index_podcasts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"
-    t.string   "uid"
+    t.integer  "uid"
     t.string   "name"
     t.string   "email"
     t.datetime "created_at"

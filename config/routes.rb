@@ -10,6 +10,6 @@ Filter::Application.routes.draw do
   get "/my_podcast", to: "podcasts#show"
   post "/users/remove_card", to: "subscriptions#remove_card", as: "remove_card"
   post "/subscriptions/reactivate", to: "subscriptions#reactivate", as: "reactivate_subscription"
-  post "new_episode", to: "episodes#new"
+  post "episodes/blacklist", to: "episodes#blacklist", as: "blacklist_episode"
   mount Resque::Server, :at => "/resque"
 end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_one :podcast
+  has_one :blacklist
   has_many :episodes, through: :podcast
   attr_accessor :limit
 
@@ -13,6 +14,9 @@ class User < ActiveRecord::Base
     info = auth_hash["info"]
     unless user = find_by_provider_and_uid(provider, uid)
       user = User.create name: info["name"], provider: provider, uid: uid, avatar_url: info["image"], token: auth_hash["credentials"]["token"]
+      blacklist = user.create_blacklist
+      user.update_attribute :blacklist, blacklist
+      user
     else
       user
     end

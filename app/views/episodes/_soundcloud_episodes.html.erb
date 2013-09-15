@@ -5,11 +5,20 @@
       <p class="title"><%= sc_episode['title'] %></p>
       <p class="description"><%= sc_episode['description'] %></p>
       <p class="cover"><%= image_tag sc_episode['artwork_url'] %></p>
-      <% if Episode.find_by_sc_id(sc_episode['id']) %>
-        <%= link_to "Added", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", disabled: true %>
-      <% else %>
-        <%= link_to "Add", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary" %>
-      <% end %>
+      <div class="btn-group" >
+        <% if Episode.find_by_sc_id(sc_episode['id']) %>
+          <%= link_to "Added", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", disabled: true %>
+        <% else %>
+          <%= link_to "Add", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary" %>
+          <% if current_user.blacklist.include?(sc_episode['id'].to_s) %>
+            <%= link_to "Allow this episode to be auto-updated", blacklist_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", method: :post %>
+          <% else %>
+              <% if current_user.subscribed %>
+                <%= link_to "Don't add this episode on auto-update", blacklist_episode_path(sc_id: sc_episode['id']), class: "btn btn-danger", method: :post %>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 

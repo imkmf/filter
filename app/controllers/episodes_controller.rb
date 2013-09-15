@@ -40,6 +40,18 @@ class EpisodesController < ApplicationController
     end
   end
 
+  def blacklist
+    @id = params[:sc_id]
+    if current_user.blacklist.include?(@id)
+      current_user.blacklist.episodes.delete(@id.to_i)
+      redirect_to episodes_path, notice: "Episode will be added in auto-updates."
+    else
+      current_user.blacklist.episodes << @id
+      current_user.blacklist.save
+      redirect_to episodes_path, notice: "Episode will not be added in auto-updates."
+    end
+  end
+
   private
   def episode_params
     params.require(:episode).permit(:name, :description, :link)
