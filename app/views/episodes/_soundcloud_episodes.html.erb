@@ -1,0 +1,21 @@
+<% if current_user.subscribed? || @podcast.episodes.size == 0 %>
+  <h3>Your Soundcloud:</h3>
+  <% @soundcloud_episodes.each do |sc_episode| %>
+    <div class="sc_episode">
+      <p class="title"><%= sc_episode['title'] %></p>
+      <p class="description"><%= sc_episode['description'] %></p>
+      <p class="cover"><%= image_tag sc_episode['artwork_url'] %></p>
+      <% if Episode.find_by_sc_id(sc_episode['id']) %>
+        <%= link_to "Added", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", disabled: true %>
+      <% else %>
+        <%= link_to "Add", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="help">
+    <h3>Are there tracks missing? Try making them <a href="http://help.soundcloud.com/customer/portal/articles/243684-can-people-download-my-sounds-"><em>downloadable</em> on your Soundcloud account</a>.</h3>
+  </div>
+<% else %>
+  <h3>Limit reached for free plan. <%= link_to "Please upgrade", new_subscription_path %> to add more episodes.</h3>
+<% end %>

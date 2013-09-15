@@ -24,13 +24,17 @@ class SubscriptionsController < ApplicationController
     # Amount in cents
     @amount = 800
 
-    @customer = Stripe::Customer.create(
-      email: current_user.email,
-      card:  params[:stripeToken],
-      plan:  1,
-    )
-    current_user.update(subscribed: true, stripe_token: @customer.id)
-    redirect_to my_podcast_path, success: "Your account has been upgraded! Thanks for using Filter!"
+    if current_user.stripe_token
+      reactivate
+    else
+      @customer = Stripe::Customer.create(
+        email: current_user.email,
+        card:  params[:stripeToken],
+        plan:  1,
+      )
+      current_user.update(subscribed: true, stripe_token: @customer.id)
+      redirect_to my_podcast_path, success: "Your account has been upgraded! Thanks for using Filter!"
+    end
 
   rescue Stripe::CardError => e
     redirect_to subscription_path, error: e.message
