@@ -1,11 +1,34 @@
 <h1>Editing episode "<%= @episode.name %>"</h1>
 
-<%= simple_form_for @episode do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description, as: :text %>
-  <%# image_tag episode.cover %>
-  // Paperclip would be nice here
-  <%= f.input :link %>
-  <%= f.button :submit %>
+<%= simple_form_for @episode, html: { role: "form", class: "form-horizontal" } do |f| %>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Name</span>
+      <%= f.input_field :name, class: "form-control", label: false %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Description</span>
+      <%= f.input_field :description, class: "form-control", label: false, as: :text %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <%= image_tag @episode.cover %>
+      // Paperclip would be nice here
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Link</span>
+      <%= f.input_field :link, class: "form-control", disabled: true, label: false %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
 
