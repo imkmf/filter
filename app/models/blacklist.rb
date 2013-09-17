@@ -7,13 +7,11 @@ class Blacklist < ActiveRecord::Base
   end
 
   def add(id)
-    self.episodes.push(id)
-    self.save
+    update_attribute :episodes, episodes + [ id ]
   end
 
   def remove(id)
-    episodes.delete(id)
-    save
+    update_attribute :episodes, episodes - [ id ]
   end
 
   private

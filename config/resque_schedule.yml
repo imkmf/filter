@@ -1,5 +1,5 @@
 generate_podcast:
-  every: 1m
+  every: 1h
   class: GeneratePodcast
   args:
   description: Generate Podcast XML File

@@ -1,0 +1,7 @@
+<h1><%= @episode.name %></h1>
+<p><%= @episode.description %></p>
+<p><%= image_tag @episode.cover %></p>
+<p><%= link_to "Edit this episode", edit_episode_path(@episode), class: "btn btn-success" %></p>
+<p><%= link_to "Download link", @episode.link, class: "btn btn-primary" %></p>
+<p><%= link_to "Remove from podcast", episode_path(@episode), confirm: "Are you sure?", method: :delete, class: "btn btn-danger" %></p>
+

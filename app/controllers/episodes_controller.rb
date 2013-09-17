@@ -43,11 +43,10 @@ class EpisodesController < ApplicationController
   def blacklist
     @id = params[:sc_id]
     if current_user.blacklist.include?(@id)
-      current_user.blacklist.episodes.delete(@id.to_i)
+      current_user.blacklist.remove(@id)
       redirect_to episodes_path, notice: "Episode will be added in auto-updates."
     else
-      current_user.blacklist.episodes << @id
-      current_user.blacklist.save
+      current_user.blacklist.add(@id)
       redirect_to episodes_path, notice: "Episode will not be added in auto-updates."
     end
   end

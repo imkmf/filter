@@ -8,4 +8,4 @@ hi
 todo
 ---
 
-removing episodes from auto-update blacklist is broken
+option to replace cover image for episodes on episodes#edit

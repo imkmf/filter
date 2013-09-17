@@ -13,9 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20130915223142) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "blacklists", force: true do |t|
     t.integer  "user_id"
-    t.string   "episodes",   array: true
+    t.string   "episodes",   default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

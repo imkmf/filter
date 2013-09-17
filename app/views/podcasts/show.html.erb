@@ -22,7 +22,7 @@
     <h3>You have no episodes currently added to your podcast.</h3>
   <% elsif %>
     <% @episodes.each do |episode| %>
-      <h3><%= episode.name %></h3>
+      <h3><%= link_to episode.name, episode %></h3>
     <% end %>
   <% end %>
 </div>
