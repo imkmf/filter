@@ -1,10 +1,96 @@
+<script>
+</script>
+
 <h1>Editing podcast</h1>
 
-<%= simple_form_for @podcast do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description, as: :text %>
-  <%= f.label :cover %>
-  <%= f.file_field :cover %>
-  <%= f.input :categories, collection: Category.all, input_html: { multiple: true } %>
-  <%= f.submit %>
+<%= simple_form_for @podcast, html: { role: "form", class: "form-horizontal" } do |f| %>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Title</span>
+      <%= f.input_field :name, class: "form-control", label: false %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Subtitle</span>
+      <%= f.input_field :subtitle, class: "form-control", label: false %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Summary</span>
+      <%= f.input_field :summary, class: "form-control", label: false, as: :text %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Description</span>
+      <%= f.input_field :description, class: "form-control", label: false, as: :text %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.label :cover, label: "Cover (1400x1400 JPG or PNG)" %>
+    </div>
+    <div class="input-group">
+      <%= f.file_field :cover, class: "btn" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Website</span>
+      <%= f.input_field :website, class: "form-control", label: false %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Author</span>
+      <%= f.input_field :author, class: "form-control", label: false %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Copyright</span>
+      <%= f.input_field :copyright, class: "form-control", label: false %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.label :language %>
+    </div>
+    <div class="input-group">
+      <%= f.input_field :language, collection: LanguageList::COMMON_LANGUAGES, class: "select2" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.label :explicit, label: "Explicit?" %>
+    </div>
+
+    <div class="input-group">
+      <%= f.input_field :explicit, label: "Explicit?", class: "select2", collection: [ 'Yes', 'No', 'Clean' ] %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.label :categories, label: "Categories (Pick 3)" %>
+    </div>
+
+    <div class="input-group">
+      <%= f.input_field :categories, class: "select3", multiple: true, collection: Category.all %>
+    </div>
+  </div>
+
+  <%= f.submit "Update podcast", class: "btn btn-primary" %>
 <% end %>

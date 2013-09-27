@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'mechanize'
+gem 'language_list'
+gem 'select2-rails'
 
 group :development do
   gem 'guard'
@@ -38,7 +40,7 @@ gem 'figaro'
 gem 'soundcloud-client'
 gem 'stripe'
 gem 'simple_form'
-gem "paperclip", "~> 3.0"
+gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'resque', require: 'resque/server'
 gem 'resque-scheduler', require: 'resque_scheduler'

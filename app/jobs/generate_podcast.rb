@@ -40,6 +40,8 @@ module GeneratePodcast
       @name = podcast.name
       @description = podcast.description
       @cover = podcast.cover
+      # Get language code
+      # LanguageList::LanguageInfo.find("3DIGIT")
       podcast.episodes.each do |episode|
         process_episode(episode)
       end
