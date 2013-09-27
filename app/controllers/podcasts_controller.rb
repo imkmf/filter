@@ -7,7 +7,8 @@ class PodcastsController < ApplicationController
     @episodes = @podcast.episodes
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @podcast.update_attributes(podcast_params)
@@ -19,7 +20,7 @@ class PodcastsController < ApplicationController
 
   private
   def podcast_params
-    params.require(:podcast).permit(:name, :description, :cover)
+    params.require(:podcast).permit(:name, :description, :cover, category_ids: [])
   end
 
   def get_user
