@@ -42,6 +42,8 @@ module GeneratePodcast
       @cover = podcast.cover
       # Get language code
       # LanguageList::LanguageInfo.find("3DIGIT")
+      # Category
+      # Erb Escape
       podcast.episodes.each do |episode|
         process_episode(episode)
       end
