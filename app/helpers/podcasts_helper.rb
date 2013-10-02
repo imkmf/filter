@@ -1,9 +1,9 @@
 module PodcastsHelper
   def podcast_plan
     if current_user.subscribed?
-      "Pro Plan"
+      "Pro"
     else
-      "Free Plan"
+      "Free"
     end
   end
 end
