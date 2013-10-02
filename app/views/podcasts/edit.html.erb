@@ -35,6 +35,7 @@
       <%= f.label :cover, label: "Cover (1400x1400 JPG or PNG)" %>
     </div>
     <div class="input-group">
+      <%= image_tag @podcast.cover.url(:medium) %>
       <%= f.file_field :cover, class: "btn" %>
     </div>
   </div>

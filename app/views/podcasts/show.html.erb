@@ -5,7 +5,9 @@
 
 <div>
   <% if @podcast.cover_file_name %>
-    <%= image_tag @podcast.cover.url(:medium) %>
+    <div>
+      <%= image_tag @podcast.cover.url(:medium) %>
+    </div>
     <%= link_to "Edit podcast", edit_podcast_path(@podcast), class: "btn btn-primary" %>
   <% else %>
     <h3>You're missing a cover for your podcast! Try
