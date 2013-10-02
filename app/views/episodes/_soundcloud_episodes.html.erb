@@ -7,7 +7,7 @@
         <p class="description"><%= sc_episode['description'] %></p>
         <p class="cover"><%= image_tag sc_episode['artwork_url'] %></p>
         <div class="btn-group" >
-          <%= link_to "Add This Podcast", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary" %>
+          <%= link_to "Add Episode", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary" %>
           <% if current_user.blacklist.include?(sc_episode['id'].to_s) %>
             <%= link_to "Allow this episode to be auto-updated", blacklist_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", method: :post %>
           <% else %>

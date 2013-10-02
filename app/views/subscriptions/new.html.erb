@@ -1,12 +1,13 @@
-<h2>Subscribe to Filter to get:</h2>
+<h3>Subscribe to Filter to get:</h3>
 
-<h3>- Unlimited episodes for your podcast</h3>
-<h3>- Auto-updating upon new Soundcloud uploads</h3>
+<h4>- Unlimited episodes for your podcast</h4>
+<h4>- Auto-updating upon new Soundcloud uploads</h4>
 
-<h3>Try Filter for a week, free of charge.</h3>
+<h2>Subscribe and try Filter for a week, free of charge.</h2>
 
 <% if current_user.stripe_token %>
   <%= button_to "Reactivate Filter Subscription", reactivate_subscription_path, class: 'btn btn-primary' %>
+  <br />
   <p>Our records show that you have previously had a Filter account.</p>
   <p>Using the above form will resubscribe with your previous account information.
   If you would like to change your credit card information, please
@@ -16,7 +17,7 @@
     <%= form_tag subscriptions_path do %>
       <article>
         <label class="amount">
-          <span>Amount: $8.00</span>
+          <span>$8.00 a month.</span>
         </label>
       </article>
 

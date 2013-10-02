@@ -24,18 +24,18 @@
 
   <h3>Your account plan is:
     <em><%= "Unlimited" if @user.subscribed %></em>
-  </h3>
-  <h3>
-    <% if @on_trial %>
-      Trial period ends:
-    <% else %>
-      Renew date:
-    <% end %>
-
-    <%= distance_of_time_in_words_to_now(@end_time) %> (<%= @end_time.to_formatted_s(:short) %>)
-  </h3>
-
   <% if @user.subscribed %>
+    </h3>
+    <h3>
+      <% if @on_trial %>
+        Trial period ends:
+      <% else %>
+        Renew date:
+      <% end %>
+
+      <%= distance_of_time_in_words_to_now(@end_time) %> (<%= @end_time.to_formatted_s(:short) %>)
+    </h3>
+
     <p>Your current card information: </p>
     <p><strong>Type:</strong> <%= @card.type %></p>
     <p><strong>Last four digits: </strong> <%= @card.last4 %></p>

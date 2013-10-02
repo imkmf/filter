@@ -14,7 +14,7 @@ class SubscriptionsController < ApplicationController
       @customer = Stripe::Customer.retrieve(current_user.stripe_token)
       @customer.update_subscription(plan: 1)
       current_user.update(subscribed: true)
-      redirect_to my_podcast_path, success: "Your upgraded account has been reinstated! Thanks for using Filter!"
+      redirect_to my_podcast_path, notice: "Your upgraded account has been reinstated! Thanks for using Filter!"
     else
       redirect_to edit_user_path(current_user), alert: "You do not have a current subscription."
     end
@@ -33,7 +33,7 @@ class SubscriptionsController < ApplicationController
         plan:  1,
       )
       current_user.update(subscribed: true, stripe_token: @customer.id)
-      redirect_to my_podcast_path, success: "Your account has been upgraded! Thanks for using Filter!"
+      redirect_to my_podcast_path, notice: "Your account has been upgraded! Thanks for using Filter!"
     end
 
   rescue Stripe::CardError => e
