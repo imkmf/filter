@@ -4,6 +4,7 @@ class EpisodesController < ApplicationController
   before_filter :get_episode
 
   def index
+    cookies['not_new'] = ''
     @episodes = @podcast.episodes
     @soundcloud_episodes = api.user_tracks(current_user.uid, limit: current_user.limit, filter: 'downloadable')
   end
@@ -26,7 +27,9 @@ class EpisodesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    cookies['not_new'] = ''
+  end
 
   def update
     if @episode.update(episode_params)

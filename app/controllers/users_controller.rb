@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :get_user
 
   def edit
+    cookies['not_new'] = ''
     if @user.stripe_token
       @customer = Stripe::Customer.retrieve(@user.stripe_token)
       @subscription = @customer.subscription

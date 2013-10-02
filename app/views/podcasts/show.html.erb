@@ -1,5 +1,6 @@
-<h1>Welcome to Filter!</h1>
-<h4><%= podcast_plan %></h4>
+<% unless cookies[:not_new] %>
+  <h1>Welcome to Filter!</h1>
+<% end %>
 
 <h2><%= @podcast.name %></h1>
 

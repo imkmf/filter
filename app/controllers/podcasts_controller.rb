@@ -8,6 +8,7 @@ class PodcastsController < ApplicationController
   end
 
   def edit
+    cookies['not_new'] = ''
   end
 
   def update
