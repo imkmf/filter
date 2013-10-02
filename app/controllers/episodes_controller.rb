@@ -22,7 +22,7 @@ class EpisodesController < ApplicationController
     )
 
     if @episode
-      redirect_to episodes_path, alert: "#{ @episode.name } has been added to your podcast."
+      redirect_to episodes_path, notice: "#{ @episode.name } has been added to your podcast."
     end
   end
 
