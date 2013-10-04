@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Filter - Podcasting Done Right.</title>
+    <title>Filter - Podcasting Done Right</title>
     <%= stylesheet_link_tag "front" %>
     <%= csrf_meta_tags %>
   </head>
@@ -11,63 +11,37 @@
         <div class="item active">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <h1>Filter</h1>
+              <p>Podcasting should be easy. Simply sign-in with Soundcloud and get started making a publishable (and iTunes-friendly) podcast within seconds.</p>
+              <p><a class="soundcloud-button" href="/auth/soundcloud"><%= image_tag "soundcloud-button.png" %></a></p>
             </div>
           </div>
         </div>
       </div>
-    </div><!-- /.carousel -->
+    </div>
 
     <div class="container marketing">
 
-      <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
-
-
-      <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <div class="col-lg-3">
+          <i class="center icon-4x icon-cloud"></i>
+          <h2>Import from Soundcloud</h2>
+          <p>Soundcloud covers track names, descriptions, even cover art for your episodes.</p>
         </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="data:image/png;base64," data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <div class="col-lg-3">
+          <i class="icon-4x center icon-wrench"></i>
+          <h2>Instant feeds for iTunes or your own site</h2>
+          <p>Avoid iTunes' complicated setup process with an easy alternative with Filter, or get an RSS feed for your own website.</p>
         </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="data:image/png;base64," data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <div class="col-lg-3">
+          <i class="icon-4x center icon-truck"></i>
+          <h2>Publish early, and often</h2>
+          <p>Your feed URL is hosted on our Amazon S3 servers, so uptime is high and updates are quick.</p>
         </div>
-        <div class="col-md-7">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <div class="col-lg-3">
+          <i class="icon-4x center icon-upload"></i>
+          <h2>Keep your show up-to-date with auto-update</h2>
+          <p>Sign up for Filter's <strong>unlimited</strong> plan and get auto-updates, so your show will stay up-to-date on iTunes without any additional work.</p>
         </div>
       </div>
 
@@ -75,25 +49,93 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Everything <span class="text-muted">under your control.</span></h2>
+          <p class="lead">Read the iTunes podcast requirements? All of those options are configurable on a single page - your podcast will be iTunes-valid in seconds.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="data:image/png;base64," data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <%= image_tag('podcast.png', class: "featurette-image img-responsive") %>
         </div>
       </div>
 
       <hr class="featurette-divider">
 
-      <!-- /END THE FEATURETTES -->
+      <div class="row featurette">
+        <div class="col-md-5">
+          <%= image_tag('episode.png', class: "featurette-image img-responsive") %>
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Upload to Soundcloud <span class="text-muted">and let us do the rest.</span></h2>
+          <p class="lead">Filter Unlimited's auto-update feature means that all you have to do is upload your new episode to Soundcloud and fill out the information there - we'll take care of getting it onto iTunes for you, with hourly refreshing of your podcast feed.</p>
+        </div>
+      </div>
 
+      <hr class="featurette-divider">
 
-      <!-- FOOTER -->
+      <div class="row featurette">
+        <div class="col-md-6 col-md-offset-3">
+          <h2 class="featurette-heading">You should be focusing on content. <span class="text-muted">We'll handle the scary parts.</span></h2>
+          <p class="lead">Podcasting isn't writing an XML file. It's about creating interesting and innovative content. Let us make podcasting easy again.</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-6 col-md-offset-3">
+          <h2 class="featured-heading">Filter has three plans: Free, Pro, and Unlimited.</h2>
+        </div>
+      </div>
+      <br><br>
+
+      <div class="row pricing-table pricing-three-column">
+        <div class="col-md-4 plan">
+          <div class="plan-name-bronze">
+            <h2>Free</h2>
+            <span>$0 / Month</span>
+          </div>
+          <ul>
+            <li class="plan-feature">1 Episode</li>
+            <li class="plan-feature">No auto-update</li>
+          </ul>
+        </div>
+        <div class="col-md-4 plan">
+          <div class="plan-name-silver">
+            <h2>Pro</h2>
+            <span>$5 / Month</span>
+          </div>
+          <ul>
+            <li class="plan-feature">3 Episodes</li>
+            <li class="plan-feature">No auto-update</li>
+          </ul>
+        </div>
+        <div class="col-md-4 plan">
+          <div class="plan-name-gold">
+            <h2>Unlimited</h2>
+            <span>$10 / Month</span>
+          </div>
+          <ul>
+            <li class="plan-feature">Unlimited Episodes</li>
+            <li class="plan-feature"><strong>Auto-update for episodes</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-6 col-md-offset-3">
+          <h2 class="featured-heading">Interested? Login with Soundcloud and try our free plan today.</h2>
+          <p class="lead"><a class="soundcloud-button" href="/auth/soundcloud"><%= image_tag "soundcloud-button.png" %></a></p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2013 Filter &middot; <%= link_to "Help", help_path %> &middot; <%= link_to "Contact", "mailto:kristian@usefilter.com" %></p>
       </footer>
 
-    </div><!-- /.container -->
+    </div>
   </body>
 </html>
