@@ -31,7 +31,6 @@ group :test do
 end
 
 gem 'unicorn'
-gem 'high_voltage'
 gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git',
   branch: '3'
 gem 'font-awesome-rails'

@@ -1,9 +1,10 @@
 Filter::Application.routes.draw do
-  root "high_voltage/pages#show", id: "home"
+  root "pages#home"
   resources :podcasts, except: [:index]
   resources :episodes
   resources :subscriptions
   resources :users, only: [:edit, :update]
+  get '/help', to: "pages#help"
   get "/utilities/hello"
   get "/auth/:provider/:callback", to: "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout

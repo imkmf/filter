@@ -4,7 +4,7 @@
   <% else %>
     <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
   <% end %>
-  <li class="<%= 'active' if current_page?(page_path('help')) %>"><%= link_to "Help", page_path('help') %></li>
+  <li class="<%= 'active' if current_page?(help_path) %>"><%= link_to "Help", help_path %></li>
   <% if current_user %>
     <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>"><%= link_to "Account", edit_user_path(current_user) %></li>
     <% unless current_user.subscribed %>

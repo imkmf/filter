@@ -91,7 +91,6 @@ GEM
       guard (>= 1.8)
       rspec (~> 2.13)
     hashie (2.0.5)
-    high_voltage (1.2.3)
     hike (1.2.3)
     http-cookie (1.0.1)
       domain_name (~> 0.5)
@@ -299,7 +298,6 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-rspec
-  high_voltage
   intercom-rails (~> 0.2.21)
   jbuilder (~> 1.2)
   jquery-rails
