@@ -20,6 +20,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      if @user.email_was == nil and @user.email_changed?
+        FilterMailer.gave_email(@user.email)
+      end
       redirect_to my_podcast_path, notice: "Your profile has been updated."
     end
   end
