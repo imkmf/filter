@@ -19,7 +19,6 @@ group :development do
   gem 'pry'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'letter_opener'
 end
 
 group :development, :test do
@@ -46,4 +45,3 @@ gem 'resque', require: 'resque/server'
 gem 'resque-scheduler', require: 'resque_scheduler'
 gem 'intercom-rails', '~> 0.2.21'
 gem 'resque_mailer'
-gem 'roadie'
