@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  layout "front", only: [:home]
-  def home
+  layout false, only: [:front]
+  def front
   end
 
   def help

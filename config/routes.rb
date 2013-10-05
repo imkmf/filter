@@ -1,5 +1,5 @@
 Filter::Application.routes.draw do
-  root "pages#home"
+  root "pages#front"
   resources :podcasts, except: [:index]
   resources :episodes
   resources :subscriptions
