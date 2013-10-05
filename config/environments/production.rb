@@ -87,4 +87,6 @@ Filter::Application.configure do
       secret_access_key: Figaro.env.aws_secret_access_key,
     }
   }
+
+  config.action_mailer.default_url_options = { host: "www.usefilter.com" }
 end
