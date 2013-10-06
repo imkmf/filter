@@ -5,4 +5,8 @@ class Category < ActiveRecord::Base
   def to_s
     name
   end
+
+  def to_it
+    name.gsub('&', '&amp;')
+  end
 end

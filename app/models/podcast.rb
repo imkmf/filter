@@ -6,6 +6,10 @@ class Podcast < ActiveRecord::Base
   has_and_belongs_to_many :categories
   accepts_nested_attributes_for :categories
 
+  def to_s
+    name
+  end
+
   def set_name
     if user
       self.name ||= "#{ user.name }'s podcast"
@@ -13,4 +17,16 @@ class Podcast < ActiveRecord::Base
       self.name ||= "Podcast"
     end
   end
+
+  def short_lang
+    language[0..2]
+  end
+
+  def cover_url
+    Rails.root.join(cover.url)
+  end
+
+  def title; name end
+  def link; website end
+
 end

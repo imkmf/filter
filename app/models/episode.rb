@@ -5,6 +5,10 @@ class Episode < ActiveRecord::Base
   belongs_to :podcast
   before_save :check_302
 
+  def to_s
+    name
+  end
+
   def check_302
     link = self.link
     if link_changed? && link.include?('stream')
