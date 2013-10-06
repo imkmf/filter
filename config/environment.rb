@@ -8,9 +8,9 @@ ActionMailer::Base.smtp_settings = {
   user_name: Figaro.env.mandrill_user,
   password: Figaro.env.mandrill_pass,
   domain: 'usefilter.com',
-  address: 'smtp.sendgrid.net',
+  address: 'smtp.mandrillapp.com',
   port: 587,
-  authentication: :plain,
-  enable_starttls_auto: true
+  enable_starttls_auto: true,
+  authentication: 'login',
 }
 
