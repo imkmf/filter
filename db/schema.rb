@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006162352) do
+ActiveRecord::Schema.define(version: 20131013225621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20131006162352) do
     t.integer  "podcast_id"
     t.text     "name"
     t.string   "cover"
-    t.string   "link"
+    t.text     "link"
     t.text     "description"
     t.integer  "sc_id"
     t.string   "cover_file_name"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 20131006162352) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.text     "summary"
+    t.text     "subtitle"
+    t.string   "explicit"
+    t.string   "duration"
   end
 
   add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id", using: :btree

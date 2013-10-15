@@ -4,7 +4,7 @@
   <h3 class="alert alert-error">Your podcast has no current episodes.</h3>
 <% else %>
   <% @episodes.each do |episode| %>
-    <h4><%= link_to episode.name, edit_episode_path(episode) %></h4>
+    <h4><%= link_to episode.name, episode_path(episode) %></h4>
     <p><%# episode.description %></p>
     <p><%= image_tag episode.cover %></p>
     <div class="btn-group">
@@ -16,4 +16,8 @@
 
 <hr>
 
-<%= render 'soundcloud_episodes' %>
+<% if current_user.subscribed? || @podcast.episodes.size == 0 %>
+  <%= render 'soundcloud_episodes' %>
+<% else %>
+  <h3>Limit reached for free plan. <%= link_to "Please upgrade", new_subscription_path %> to add more episodes.</h3>
+<% end %>

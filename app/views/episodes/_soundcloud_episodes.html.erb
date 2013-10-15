@@ -1,28 +1,24 @@
-<% if current_user.subscribed? || @podcast.episodes.size == 0 %>
-  <h3>Your Soundcloud:</h3>
-  <% @soundcloud_episodes.each do |sc_episode| %>
-    <div class="sc_episode">
-      <% unless Episode.find_by_sc_id(sc_episode['id']) %>
-        <p class="title"><%= sc_episode['title'] %></p>
-        <p class="description"><%= sc_episode['description'] %></p>
-        <p class="cover"><%= image_tag sc_episode['artwork_url'] %></p>
-        <div class="btn-group" >
-          <%= link_to "Add Episode", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary" %>
-          <% if current_user.blacklist.include?(sc_episode['id'].to_s) %>
-            <%= link_to "Allow this episode to be auto-updated", blacklist_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", method: :post %>
-          <% else %>
-            <% if current_user.subscribed %>
-              <%= link_to "Don't add this episode on auto-update", blacklist_episode_path(sc_id: sc_episode['id']), class: "btn btn-danger", method: :post %>
-            <% end %>
+<h3>Your Soundcloud:</h3>
+<% @soundcloud_episodes.each do |sc_episode| %>
+  <div class="sc_episode">
+    <% unless Episode.find_by_sc_id(sc_episode['id']) %>
+      <p class="title"><%= sc_episode['title'] %></p>
+      <p class="description"><%= sc_episode['description'] %></p>
+      <p class="cover"><%= image_tag sc_episode['artwork_url'] %></p>
+      <div class="btn-group" >
+        <%= link_to "Add Episode", new_episode_path(sc_id: sc_episode['id']), class: "btn btn-primary" %>
+        <% if current_user.blacklist.include?(sc_episode['id'].to_s) %>
+          <%= link_to "Allow this episode to be auto-updated", blacklist_episode_path(sc_id: sc_episode['id']), class: "btn btn-success", method: :post %>
+        <% else %>
+          <% if current_user.subscribed %>
+            <%= link_to "Don't add this episode on auto-update", blacklist_episode_path(sc_id: sc_episode['id']), class: "btn btn-danger", method: :post %>
           <% end %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class="help">
-    <h3>Are there tracks missing? Try making them <em>downloadable</em> <a href="http://help.soundcloud.com/customer/portal/articles/243684-can-people-download-my-sounds-">on your Soundcloud account</a>.</h3>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-<% else %>
-  <h3>Limit reached for free plan. <%= link_to "Please upgrade", new_subscription_path %> to add more episodes.</h3>
 <% end %>
+
+<div class="help">
+  <h3>Are there tracks missing? Try making them <em>downloadable</em> <a href="http://help.soundcloud.com/customer/portal/articles/243684-can-people-download-my-sounds-">on your Soundcloud account</a>.</h3>
+</div>

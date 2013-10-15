@@ -19,7 +19,8 @@ class EpisodesController < ApplicationController
       description: @sc_track['description'],
       cover: @cover,
       link: @link,
-      sc_id: @sc_id
+      sc_id: @sc_id,
+      duration: @sc_track['duration'],
     )
 
     if @episode
@@ -56,7 +57,7 @@ class EpisodesController < ApplicationController
 
   private
   def episode_params
-    params.require(:episode).permit(:name, :description, :link)
+    params.require(:episode).permit(:name, :description, :link, :subtitle, :explicit)
   end
 
   def get_podcast

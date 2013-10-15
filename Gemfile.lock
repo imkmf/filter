@@ -157,7 +157,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
-    pg (0.16.0)
+    pg (0.17.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -300,7 +300,7 @@ DEPENDENCIES
   omniauth
   omniauth-soundcloud (~> 1.0.0)
   paperclip (~> 3.0)
-  pg
+  pg (~> 0.17.0)
   pry
   rails (~> 4.0.0)
   resque
