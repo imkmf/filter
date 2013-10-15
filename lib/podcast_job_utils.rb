@@ -29,6 +29,7 @@ class PodcastJobUtils
       itunes_file.add_episode(episode)
     end
     puts "Processed #{ @podcast }."
+    itunes_file.save
   end
 
   def auto_update

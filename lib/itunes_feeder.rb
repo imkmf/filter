@@ -27,6 +27,7 @@ class ItunesFeeder
     channel.image = RSS::Rss::Channel::Image.new
     channel.image.title = channel.title
     channel.image.url = channel.link
+    channel.image.link = channel.link
     channel.itunes_author = @podcast.author
     channel.itunes_owner = RSS::ITunesChannelModel::ITunesOwner.new
     channel.itunes_owner.itunes_name = @podcast.author
@@ -36,6 +37,7 @@ class ItunesFeeder
     @itunes_image = RSS::ITunesChannelModel::ITunesImage.new(@podcast.cover_url)
     channel.itunes_image = @itunes_image
     channel.itunes_explicit = @podcast.explicit
+    return channel
   end
 
   def add_episode(audio)
@@ -46,13 +48,14 @@ class ItunesFeeder
     @item.guid = RSS::Rss::Channel::Item::Guid.new
     @item.guid.content = @audio.link
     @item.guid.isPermaLink = true
-    @item.pubDate = @audio.updated_at
+    @item.pubDate = @audio.updated_at.rfc2822
     @item.description = @audio.description
     @item.itunes_summary = @audio.description
     @item.itunes_subtitle = @audio.subtitle
     @item.itunes_explicit = @audio.podcast.explicit
     @item.itunes_author = @audio.podcast.author
-    @item.itunes_duration = @audio.duration
+    @duration = RSS::ITunesItemModel::ITunesDuration.new(@audio.itunes_duration)
+    @item.itunes_duration = @duration
 
     @item.enclosure = \
       RSS::Rss::Channel::Item::Enclosure.new(@item.link, @audio.size, '@audio/mpeg')

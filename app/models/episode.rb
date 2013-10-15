@@ -1,4 +1,5 @@
 require 'mechanize'
+require 'rss/itunes'
 
 class Episode < ActiveRecord::Base
   include ActiveModel::Dirty
@@ -26,5 +27,11 @@ class Episode < ActiveRecord::Base
       new_link = CGI.escapeHTML(new_link)
       self.link = new_link
     end
+  end
+
+  def itunes_duration
+    seconds = duration.to_i / 1000
+    time = Time.at(seconds).gmtime.strftime('%R:%S')
+    RSS::ITunesItemModel::ITunesDuration.parse(time)
   end
 end
