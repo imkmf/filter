@@ -1,4 +1,5 @@
 require 'resque_scheduler'
+require 'resque_scheduler/server'
 
 Resque.redis = 'localhost:6379'
 Resque.redis.namespace = "resque:filter"

@@ -10,11 +10,11 @@ class PodcastJobUtils
   end
 
   def itunes_file
-    ItunesFeeder.new(@podcast)
+    @_itunes_file ||= ItunesFeeder.new(@podcast)
   end
 
   def api
-    Soundcloud::API.new(@user.token)
+    @_api ||= Soundcloud::API.new(@user.token)
   end
 
   def process_podcast
@@ -28,7 +28,6 @@ class PodcastJobUtils
       puts "Adding #{ episode }."
       itunes_file.add_episode(episode)
     end
-    puts "Processed #{ @podcast }."
     itunes_file.save
   end
 
@@ -40,16 +39,18 @@ class PodcastJobUtils
     @soundcloud_episodes.each do |episode|
       unless Episode.find_by_sc_id(episode['id']) || @user.blacklist.include?(episode['id'])
         @sc_track = api.track(episode['id'])
-        @cover = @sc_track['artwork_url']
-        @link = "#{ @sc_track['download_url'] }?client_id=#{ Figaro.env.soundcloud_key }"
-        @episode = @subscriber.episodes.create(
-          name: @sc_track['title'],
-          description: @sc_track['description'],
-          cover: @cover,
-          link: @link,
-          sc_id: @sc_id
-        )
-        puts "Auto-updated #{ @soundcloud_episodes.count } episodes."
+        unless @sc_track['original_format'] == 'mp3'
+          @cover = @sc_track['artwork_url']
+          @link = "#{ @sc_track['download_url'] }?client_id=#{ Figaro.env.soundcloud_key }"
+          @episode = @subscriber.episodes.create(
+            name: @sc_track['title'],
+            description: @sc_track['description'],
+            cover: @cover,
+            link: @link,
+            sc_id: @sc_id
+          )
+          puts "Auto-updated #{ @soundcloud_episodes.count } episodes."
+        end
       end
     end
   end

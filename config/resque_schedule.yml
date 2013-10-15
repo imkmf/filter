@@ -1,5 +1,11 @@
-generate_podcast:
+generate_podcasts:
   every: 1h
-  class: GeneratePodcast
+  class: GeneratePodcastsJob
   args:
   description: Generate Podcast XML File
+
+download_episodes:
+  every: 5m
+  class: DownloadEpisodesJob
+  args:
+  description: Download episodes to S3

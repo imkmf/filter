@@ -12,19 +12,23 @@ class EpisodesController < ApplicationController
   def new
     @sc_id = params[:sc_id]
     @sc_track = api.track(@sc_id)
-    @cover ||= @sc_track['artwork_url']
-    @link = "#{ @sc_track['download_url'] }?client_id=#{ Figaro.env.soundcloud_key }"
-    @episode = @podcast.episodes.create(
-      name: @sc_track['title'],
-      description: @sc_track['description'],
-      cover: @cover,
-      link: @link,
-      sc_id: @sc_id,
-      duration: @sc_track['duration'],
-    )
+    if @sc_track['original_format'] != "mp3"
+      redirect_to episodes_path, alert: "The episode file is not an MP3, and is incompatible with iTunes."
+    else
+      @cover ||= @sc_track['artwork_url']
+      @link = "#{ @sc_track['download_url'] }?client_id=#{ Figaro.env.soundcloud_key }"
+      @episode = @podcast.episodes.create(
+        name: @sc_track['title'],
+        description: @sc_track['description'],
+        cover: @cover,
+        link: @link,
+        sc_id: @sc_id,
+        duration: @sc_track['duration'],
+      )
 
-    if @episode
-      redirect_to episodes_path, notice: "#{ @episode.name } has been added to your podcast."
+      if @episode
+        redirect_to episodes_path, notice: "#{ @episode.name } has been added to your podcast."
+      end
     end
   end
 

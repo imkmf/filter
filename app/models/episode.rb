@@ -1,17 +1,14 @@
-require 'mechanize'
-require 'rss/itunes'
-
 class Episode < ActiveRecord::Base
   include ActiveModel::Dirty
   belongs_to :podcast
-  before_save :check_302
-  before_create :set_explicit
+  before_create :is_new
 
   def to_s
     name
   end
 
-  def set_explicit
+  def is_new
+    self.needs_download = true
     self.explicit = self.podcast.explicit
   end
 
@@ -20,18 +17,14 @@ class Episode < ActiveRecord::Base
   end
 
   def check_302
-    link = self.link
-    if link_changed? && link.include?('download')
-      agent = Mechanize.new
-      new_link = agent.head(link).uri.to_s
-      new_link = CGI.escapeHTML(new_link)
-      self.link = new_link
-    end
   end
 
   def itunes_duration
     seconds = duration.to_i / 1000
-    time = Time.at(seconds).gmtime.strftime('%R:%S')
-    RSS::ITunesItemModel::ITunesDuration.parse(time)
+    Time.at(seconds).gmtime.strftime('%R:%S')
+  end
+
+  def s3_name
+    "#{ self.created_at.to_s.parameterize }-#{ self.name.parameterize }.mp3"
   end
 end

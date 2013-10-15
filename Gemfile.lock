@@ -159,6 +159,7 @@ GEM
       mime-types
     pg (0.17.0)
     polyglot (0.3.3)
+    proxies (0.2.1)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -222,6 +223,8 @@ GEM
       rspec-mocks (~> 2.13.0)
     rufus-scheduler (2.0.22)
       tzinfo (>= 0.3.23)
+    s3 (0.3.13)
+      proxies (~> 0.2.0)
     sass (3.2.9)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -307,6 +310,7 @@ DEPENDENCIES
   resque-scheduler
   resque_mailer
   rspec-rails
+  s3
   sass-rails (~> 4.0.0)
   select2-rails
   shoulda-matchers

@@ -1,17 +1,16 @@
-require 'rss/2.0'
-require 'rss/itunes'
+require 'rss'
 
 class ItunesFeeder
-  attr_accessor :podcast
-  attr_accessor :feed
-  attr_accessor :channel
   def initialize(podcast)
     @podcast = podcast
-    @feed = RSS::Rss.new("2.0")
+  end
+
+  def feed
+    @_feed ||= RSS::Rss.new("2.0")
   end
 
   def channel
-    @channel ||= RSS::Rss::Channel.new
+    @_channel ||= RSS::Rss::Channel.new
   end
 
   def podcast_information
@@ -63,7 +62,14 @@ class ItunesFeeder
   end
 
   def save
-    @feed.channel = @channel
-    return @feed.to_s
+    feed.channel = channel
+    puts "Processed #{ @podcast }."
+    name = "#{ @podcast.id }/#{ @podcast.id }.xml"
+    xml = feed.to_s
+    amazon = ToAmazon.new(xml, name)
+    if amazon.save
+      @podcast.update_attribute :itunes_feed, amazon.url
+      puts "Saved #{ @podcast.name } XML file."
+    end
   end
 end
