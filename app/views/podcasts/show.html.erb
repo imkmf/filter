@@ -23,14 +23,8 @@
 
 <h2>Episodes:</h2>
 
-<div class="episodes">
-  <% if @episodes.empty? %>
-    <h3>You have no episodes currently added to your podcast.</h3>
-  <% elsif %>
-    <% @episodes.each do |episode| %>
-      <h3><%= link_to episode.name, episode %></h3>
-    <% end %>
-  <% end %>
-</div>
+<%= render 'episodes/episodes' %>
 
-<%= link_to "Add episodes", episodes_path, class: "btn btn-primary" %>
+<div>
+  <br /><%= link_to "Add episodes", episodes_path, class: "btn btn-primary" %>
+</div>

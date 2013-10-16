@@ -1,7 +1,7 @@
 <h3>Your Soundcloud:</h3>
 <% @soundcloud_episodes.each do |sc_episode| %>
   <div class="sc_episode">
-    <% unless Episode.find_by_sc_id(sc_episode['id']) %>
+    <% unless bad(sc_episode) %>
       <p class="title"><%= sc_episode['title'] %></p>
       <p class="description"><%= sc_episode['description'] %></p>
       <p class="cover"><%= image_tag sc_episode['artwork_url'] %></p>
@@ -20,5 +20,10 @@
 <% end %>
 
 <div class="help">
-  <h3>Are there tracks missing? Try making them <em>downloadable</em> <a href="http://help.soundcloud.com/customer/portal/articles/243684-can-people-download-my-sounds-">on your Soundcloud account</a>.</h3>
+  <p class="lead">Are there tracks missing? Tracks must be:</p>
+  <ul>
+    <li>Downloadable</li>
+    <li>Public</li>
+    <li>MP3 files</li>
+  </ul>
 </div>

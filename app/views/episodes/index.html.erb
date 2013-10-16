@@ -1,19 +1,6 @@
-<h2>Episodes for <%= @podcast.name %>:</h2>
+<h2>Episodes:</h2>
 
-<% if @episodes.empty? %>
-  <h3 class="alert alert-error">Your podcast has no current episodes.</h3>
-<% else %>
-  <% @episodes.each do |episode| %>
-    <h4><%= link_to episode.name, episode_path(episode) %></h4>
-    <p><%# episode.description %></p>
-    <p><%= image_tag episode.cover %></p>
-    <div class="btn-group">
-      <%= link_to "Edit this episode", edit_episode_path(episode), class: "btn btn-success" %>
-      <%= link_to "Download link", episode.link, class: "btn btn-primary" %>
-      <%= link_to "Remove from podcast", episode_path(episode), confirm: "Are you sure?", method: :delete, class: "btn btn-danger"  %>
-    </div>
-  <% end %>
-<% end %>
+<%= render 'episodes' %>
 
 <hr>
 

@@ -9,3 +9,10 @@ download_episodes:
   class: DownloadEpisodesJob
   args:
   description: Download episodes to S3
+
+auto_update:
+  every: 1h
+  class: AutoUpdateJob
+  args:
+  description: Update podcasts for pro users
+
