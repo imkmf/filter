@@ -17,3 +17,21 @@
 <h3 class="muted">
   Filter <%= podcast_plan if current_user %></h4>
 </h3>
+
+<% unless current_page?(my_podcast_path) || current_page?(help_path) || current_page?(edit_user_path) %>
+  <br />
+  <div>
+    <ol class='breadcrumb'>
+      <% if current_page?(my_podcast_path) %>
+        <li class="active"><a href='#'>My Podcast</a></li>
+      <% elsif current_page?(episode_path) %>
+        <li><%= link_to "My Podcast", my_podcast_path %></li>
+        <li class="active"><%= @episode.name %></li>
+      <% elsif current_page?(edit_episode_path) %>
+        <li><%= link_to "My Podcast", my_podcast_path %></li>
+        <li><%= link_to @episode.name, episode_path(@episode) %></li>
+        <li class="active">Edit</li>
+      <% end %>
+    </ol>
+  </div>
+<% end %>
