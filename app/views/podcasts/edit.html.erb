@@ -100,5 +100,15 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.label :keywords, label: "Keywords (separated by commas)" %>
+    </div>
+
+    <div class="input-group">
+      <%= f.input_field :keywords %>
+    </div>
+  </div>
+
   <%= f.submit "Update podcast", class: "btn btn-primary" %>
 <% end %>

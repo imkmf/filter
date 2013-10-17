@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require select2
 //= require form_select
+//= require jquery.tagsinput
 //= require turbolinks
 //= require bootstrap
 //= require_tree .

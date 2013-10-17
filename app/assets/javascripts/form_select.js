@@ -9,6 +9,9 @@ var do_on_load = function() {
       maximumSelectionSize: 3,
     });
   });
+
+  $("#podcast_keywords").tagsInput();
+  $("#episode_keywords").tagsInput();
 }
 
 $(document).ready(do_on_load);
