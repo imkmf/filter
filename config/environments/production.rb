@@ -88,5 +88,7 @@ Filter::Application.configure do
     }
   }
 
+  GA.tracker = "UA-33474708-4"
+
   config.action_mailer.default_url_options = { host: "www.usefilter.com" }
 end

@@ -4,6 +4,7 @@
     <title>Filter - Podcasting Done Right</title>
     <%= stylesheet_link_tag "front" %>
     <%= csrf_meta_tags %>
+    <%= analytics_init if Rails.env.production? %>
   </head>
   <body>
     <div id="myCarousel" class="carousel">
