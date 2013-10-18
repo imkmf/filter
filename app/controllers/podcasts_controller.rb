@@ -20,6 +20,7 @@ class PodcastsController < ApplicationController
   end
 
   def publish
+    redirect_to my_podcast_path, notice: "Your podcast is publishing."
   end
 
   private

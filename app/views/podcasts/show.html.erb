@@ -4,16 +4,15 @@
 
 <h2><%= @podcast.name %></h1>
 
-<div>
-  <% if @podcast.cover_file_name %>
-    <%= image_tag @podcast.cover.url(:medium) %><br /><br />
-    <p>
-      <%= link_to "Edit podcast", edit_podcast_path(@podcast), class: "btn btn-primary" %>
-    </p>
+<% if @podcast.cover_file_name %>
+  <%= image_tag @podcast.cover.url(:medium) %><br /><br />
   <% else %>
     <h3>You're missing a cover for your podcast! Try
       <%= link_to "editing your podcast", edit_podcast_path(@podcast) %>!</h3>
   <% end %>
+<div class="btn-group">
+  <%= link_to "Edit podcast", edit_podcast_path(@podcast), class: "btn btn-primary" %>
+  <%= link_to "Publish podcast", publish_podcast_path, class: "btn btn-primary" %>
 </div>
 
 <h4>Your podcast URL: </h4>
@@ -22,9 +21,6 @@
 <hr>
 
 <h2>Episodes:</h2>
-
+<%= link_to "Add episodes", episodes_path, class: "btn btn-primary" %>
+<br /> <br />
 <%= render 'episodes/episodes' %>
-
-<div>
-  <br /><%= link_to "Add episodes", episodes_path, class: "btn btn-primary" %>
-</div>
