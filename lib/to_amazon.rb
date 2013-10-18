@@ -18,7 +18,7 @@ class ToAmazon
       new_file.content = (File.read @file)
     end
     if new_file.save
-      self.url = new_file.url
+      self.url = new_file.url.gsub('files.usefilter.com.s3.amazonaws.com', 'files.usefilter.com')
     end
   end
 end

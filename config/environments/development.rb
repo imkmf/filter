@@ -29,4 +29,15 @@ Filter::Application.configure do
   config.assets.debug = true
   config.action_mailer.default_url_options = { host: "localhost:3000" }
   # config.action_mailer.delivery_method = :letter_opener
+
+  # Paperclip
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: Figaro.env.aws_bucket,
+      access_key_id: Figaro.env.access_key_id,
+      secret_access_key: Figaro.env.access_key_secret,
+      s3_host_alias: 'files.usefilter.com',
+    }
+  }
 end
