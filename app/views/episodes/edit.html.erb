@@ -22,7 +22,6 @@
   <div class="form-group">
     <div class="input-group">
       <%= image_tag @episode.cover %>
-      // Paperclip would be nice here
     </div>
   </div>
   <div class="form-group">
@@ -43,12 +42,14 @@
       <%= f.input_field :keywords %>
     </div>
   </div>
-  <div class="form-group">
-    <div class="input-group">
-      <span class="input-group-addon">Link</span>
-      <%= f.input_field :link, class: "form-control", disabled: true, label: false %>
+  <% unless @episode.link.include?("soundcloud") %>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon">Link</span>
+        <%= f.input_field :link, class: "form-control", disabled: true, label: false %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="form-group">
     <div class="input-group">
       <%= f.button :submit, class: "btn btn-primary" %>

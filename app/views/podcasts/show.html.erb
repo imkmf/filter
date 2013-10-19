@@ -15,12 +15,11 @@
   <%= link_to "Publish podcast", publish_podcast_path, class: "btn btn-primary" %>
 </div>
 
-<h4>Your podcast URL: </h4>
-<h4><pre><%= @podcast.itunes_feed %></pre></h4>
+<% if @podcast.itunes_feed %>
+  <h4>Your podcast URL: </h4>
+  <h4><pre><%= @podcast.itunes_feed %></pre></h4>
+<% end %>
 
 <hr>
 
-<h2>Episodes:</h2>
-<%= link_to "Add episodes", episodes_path, class: "btn btn-primary" %>
-<br /> <br />
 <%= render 'episodes/episodes' %>

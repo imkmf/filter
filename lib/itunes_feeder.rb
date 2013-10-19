@@ -68,7 +68,7 @@ class ItunesFeeder
     xml = feed.to_s
     amazon = ToAmazon.new(xml, name)
     if amazon.save
-      @podcast.update_attribute :itunes_feed, url
+      @podcast.update_attribute :itunes_feed, amazon.url
       puts "Saved #{ @podcast.name } XML file."
     end
   end
