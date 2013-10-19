@@ -8,5 +8,8 @@ test:
   database: filter_test
 
 production:
-  <<: *db
-  database: filter
+  host: 127.17.0.12
+  user: root
+  password: YgEVzH8pfpCpfdGy
+  database: db
+  port: 49153
