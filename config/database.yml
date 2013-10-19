@@ -6,3 +6,7 @@ development: &db
 test:
   <<: *db
   database: filter_test
+
+production:
+  <<: *db
+  database: filter
