@@ -44,7 +44,7 @@ gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'resque', require: 'resque/server'
 gem 'resque-scheduler', require: 'resque_scheduler'
-gem 'intercom-rails', '~> 0.2.21'
+# gem 'intercom-rails', '~> 0.2.21'
 gem 'resque_mailer'
 gem 's3'
 gem "google-analytics-rails"
