@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
       5
     end
   end
+
+  def in_trial_period?
+    Time.current < self.trial_ends_at
+  end
 end

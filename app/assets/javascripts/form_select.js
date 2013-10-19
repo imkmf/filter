@@ -12,6 +12,13 @@ var do_on_load = function() {
 
   $("#podcast_keywords").tagsInput();
   $("#episode_keywords").tagsInput();
+
+  $("a#enable_coupon").click(function() {
+    $("#coupon_field").removeClass("hidden");
+    $("#coupon_field input").prop("disabled", false).focus();
+    $(this).hide();
+    return false;
+  });
 }
 
 $(document).ready(do_on_load);

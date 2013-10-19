@@ -27,7 +27,7 @@
   <% if @user.subscribed %>
     </h3>
     <h3>
-      <% if @on_trial %>
+      <% if @user.in_trial_period? %>
         Trial period ends:
       <% else %>
         Renew date:

@@ -18,7 +18,7 @@
   Filter <%= podcast_plan if current_user %></h4>
 </h3>
 
-<% unless current_page?(my_podcast_path) || current_page?(help_path) || current_page?(edit_user_path(current_user)) %>
+<% unless current_page?(my_podcast_path) || current_page?(help_path) || current_page?(edit_user_path(current_user)) || current_page?(new_subscription_path) %>
   <br />
   <div>
     <ol class='breadcrumb'>
@@ -27,13 +27,13 @@
       <% elsif current_page?(episodes_path) %>
         <li><%= link_to "My Podcast", my_podcast_path %></li>
         <li class="active">Episodes</li>
-      <% elsif current_page?(edit_podcast_path) %>
+      <% elsif current_page?(edit_podcast_path(@podcast)) %>
         <li><%= link_to "My Podcast", my_podcast_path %></li>
         <li class="active">Edit</li>
-      <% elsif current_page?(episode_path) %>
+      <% elsif current_page?(episode_path(@episode)) %>
         <li><%= link_to "My Podcast", my_podcast_path %></li>
         <li class="active"><%= @episode.name %></li>
-      <% elsif current_page?(edit_episode_path) %>
+      <% elsif current_page?(edit_episode_path(@episode)) %>
         <li><%= link_to "My Podcast", my_podcast_path %></li>
         <li><%= link_to @episode.name, episode_path(@episode) %></li>
         <li class="active">Edit</li>

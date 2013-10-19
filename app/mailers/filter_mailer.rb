@@ -7,4 +7,9 @@ class FilterMailer < ActionMailer::Base
     @help = help_url
     mail(to: @email, subject: 'Thanks for joining Filter!')
   end
+
+  def subscribed(user)
+    @user = user
+    mail(to: @user.email, subject: "You successfully signed up for Filter Pro!")
+  end
 end

@@ -27,18 +27,20 @@ class SubscriptionsController < ApplicationController
     if current_user.stripe_token
       reactivate
     else
+      @coupon = params[:coupon] || nil
       @customer = Stripe::Customer.create(
         email: current_user.email,
         card:  params[:stripeToken],
         plan:  1,
-        coupon: params[:coupon],
+        coupon: @coupon,
       )
-      current_user.update(subscribed: true, stripe_token: @customer.id)
+      @trial_end = @customer.subscription.current_period_end
+      current_user.update(subscribed: true, subscribed_at: Time.current, trial_ends_at: @trial_end, stripe_token: @customer.id)
       redirect_to my_podcast_path, notice: "Your account has been upgraded! Thanks for using Filter!"
     end
 
   rescue Stripe::CardError => e
-    redirect_to subscription_path, error: e.message
+    redirect_to new_subscription_path, alert: e.message
   end
 
   def destroy
