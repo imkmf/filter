@@ -19,9 +19,6 @@
 *.un~
 *.swp
 
-# Ignore application configuration
-/config/application.yml
-
 # Paperclip uploads
 public/system
 .DS_Store
