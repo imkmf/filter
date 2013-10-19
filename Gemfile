@@ -48,3 +48,4 @@ gem 'resque-scheduler', require: 'resque_scheduler'
 gem 'resque_mailer'
 gem 's3'
 gem "google-analytics-rails"
+gem "stripe_event"
