@@ -1,0 +1,3 @@
+production:
+  user: kristian@kristianfreeman.com
+  token: Figaro.env.librato

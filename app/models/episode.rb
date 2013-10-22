@@ -10,6 +10,7 @@ class Episode < ActiveRecord::Base
   def is_new
     self.needs_download = true
     self.explicit = self.podcast.explicit
+    Librato.increment "episode_created"
   end
 
   def size

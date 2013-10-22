@@ -34,6 +34,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
+    aggregate (0.2.2)
     arel (4.0.0)
     atomic (1.1.9)
     aws-sdk (1.13.0)
@@ -110,6 +111,15 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.1.2)
       launchy (~> 2.2)
+    librato-metrics (1.1.1)
+      aggregate (~> 0.2.2)
+      faraday (~> 0.7)
+      multi_json
+    librato-rack (0.4.3)
+      librato-metrics (~> 1.1.1)
+    librato-rails (0.10.1)
+      librato-rack (~> 0.4.2)
+      rails (>= 3.0)
     listen (1.2.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -306,6 +316,7 @@ DEPENDENCIES
   jquery-rails
   language_list
   letter_opener
+  librato-rails
   mechanize
   omniauth
   omniauth-soundcloud (~> 1.0.0)
