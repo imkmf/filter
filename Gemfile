@@ -1,4 +1,4 @@
-ource 'https://rubygems.org'
+source 'https://rubygems.org'
 
 group :development do
   gem 'guard'
@@ -12,7 +12,7 @@ end
 
 gem 'aws-sdk'
 
-gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git',
+gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git'
 
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -29,6 +29,8 @@ gem 'jquery-rails'
 gem 'language_list'
 
 gem "librato-rails"
+
+gem "mechanize"
 
 gem 'omniauth'
 
@@ -54,8 +56,7 @@ gem 'rspec-rails', group: [:development, :test]
 
 gem 's3'
 
-gem 'select2-rails'
-  branch: '3'
+gem 'select2-rails', branch: '3'
 
 gem 'shoulda-matchers', group: :test
 
