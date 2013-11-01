@@ -20,7 +20,7 @@ class PodcastsController < ApplicationController
   end
 
   def publish
-    redirect_to my_podcast_path, notice: "Your podcast is publishing."
+    redirect_to my_podcast_path, notice: "Your podcast has been put into the publishing queue and will be published shortly."
   end
 
   private

@@ -6,18 +6,20 @@
 
 <% if @podcast.cover_file_name %>
   <%= image_tag @podcast.cover.url(:medium) %><br /><br />
-  <% else %>
-    <h3>You're missing a cover for your podcast! Try
-      <%= link_to "editing your podcast", edit_podcast_path(@podcast) %>!</h3>
-  <% end %>
+<% else %>
+  <h3>You're missing a cover for your podcast! Try
+    <%= link_to 'editing your podcast', edit_podcast_path(@podcast) %>!</h3>
+<% end %>
 <div class="btn-group">
   <%= link_to "Edit podcast", edit_podcast_path(@podcast), class: "btn btn-primary" %>
-  <%= link_to "Publish podcast", publish_podcast_path, class: "btn btn-primary" %>
+  <%= link_to "Publish podcast", publish_podcast_path, class: "btn btn-success" %>
 </div>
 
 <% if @podcast.itunes_feed %>
   <h4>Your podcast URL: </h4>
   <h4><pre><%= @podcast.itunes_feed %></pre></h4>
+<% else %>
+  <h4>Your podcast has not been published yet.</h4>
 <% end %>
 
 <hr>

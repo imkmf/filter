@@ -13,7 +13,7 @@ class DownloadEpisodes
     new_link = CGI.escapeHTML(new_link)
 
     name = "#{ @episode.podcast.id }/#{ @episode.s3_name }"
-    download = open(new_link)
+    download = open(new_link, "User-Agent" => "filter")
     amazon = ToAmazon.new(download, name)
 
     if amazon.save

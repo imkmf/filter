@@ -9,8 +9,12 @@ class PodcastJobUtils
     @user = @podcast.user
   end
 
+  def podcast
+    @podcast
+  end
+
   def itunes_file
-    @_itunes_file ||= ItunesFeeder.new(@podcast)
+    @_itunes_file ||= ItunesFeeder.new(podcast)
   end
 
   def api
@@ -18,13 +22,10 @@ class PodcastJobUtils
   end
 
   def process_podcast
-    if @podcast.user.subscribed
-      auto_update(@podcast.user)
-    end
-
+    auto_update(podcast.user) if podcast.user.subscribed?
     itunes_file.podcast_information
 
-    @podcast.episodes.each do |episode|
+    podcast.episodes.each do |episode|
       puts "Adding #{ episode }."
       itunes_file.add_episode(episode)
     end
