@@ -316,6 +316,7 @@ DEPENDENCIES
   paperclip (~> 3.0)
   pg (~> 0.17.0)
   pry
+  rack
   rails (~> 4.0.0)
   rails_12factor
   resque
