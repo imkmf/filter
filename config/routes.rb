@@ -1,7 +1,9 @@
 Filter::Application.routes.draw do
   root "pages#front"
   resources :podcasts, except: [:index]
-  resources :episodes
+  resources :episodes do
+    post :sort, on: :collection
+  end
   resources :subscriptions
   resources :users, only: [:edit, :update]
   get '/help', to: "pages#help"

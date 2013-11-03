@@ -4,18 +4,20 @@
 <% else %>
   <h2>Episodes:</h2>
 
-  <div class="well">
+  <div id="sortable">
     <% @episodes.each do |episode| %>
-      <h4><%= link_to episode.name, episode_path(episode) %></h4>
-      <p><%= episode.description %></p>
-      <p><%= image_tag episode.cover %></p>
-      <% unless episode.needs_download == false %>
-        <p>We are currently downloading this episode from Soundcloud.</p>
-      <% end %>
-      <div class="btn-group">
-        <%= link_to "Edit this episode", edit_episode_path(episode), class: "btn btn-success" %>
-        <%= link_to "Download link", episode.link, class: "btn btn-primary" if episode.needs_download == false %>
-        <%= link_to "Remove from podcast", episode_path(episode), confirm: "Are you sure?", method: :delete, class: "btn btn-danger"  %>
+      <div class="well episode" data-item_id="<%= episode.id %>">
+        <h4><%= link_to episode.name, episode_path(episode) %></h4>
+        <p><%= episode.description %></p>
+        <p><%= image_tag episode.cover %></p>
+        <% unless episode.needs_download == false %>
+          <p>We are currently downloading this episode from Soundcloud.</p>
+        <% end %>
+        <div class="btn-group">
+          <%= link_to "Edit this episode", edit_episode_path(episode), class: "btn btn-success" %>
+          <%= link_to "Download link", episode.link, class: "btn btn-primary" if episode.needs_download == false %>
+          <%= link_to "Remove from podcast", episode_path(episode), confirm: "Are you sure?", method: :delete, class: "btn btn-danger"  %>
+        </div>
       </div>
     <% end %>
   </div>

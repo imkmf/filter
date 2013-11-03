@@ -29,6 +29,12 @@ class EpisodesController < ApplicationController
     end
   end
 
+  def sort
+    @episode = Episode.find(params[:id])
+    render nothing: true if @episode.update(episode_params)
+    puts @episode.row_order_position
+  end
+
   def edit
     cookies['not_new'] = ''
   end
@@ -58,7 +64,7 @@ class EpisodesController < ApplicationController
 
   private
   def episode_params
-    params.require(:episode).permit(:name, :description, :link, :subtitle, :explicit, :keywords)
+    params.require(:episode).permit(:name, :description, :link, :subtitle, :explicit, :keywords, :row_order_position)
   end
 
   def get_podcast

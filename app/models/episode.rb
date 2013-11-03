@@ -3,6 +3,11 @@ class Episode < ActiveRecord::Base
   belongs_to :podcast
   before_create :is_new
 
+  include RankedModel
+  ranks :row_order, with_same: :podcast_id
+
+  default_scope { order("row_order DESC") }
+
   def to_s
     name
   end

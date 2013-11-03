@@ -48,6 +48,8 @@ gem 'sass-rails', '~> 4.0.0'
 
 gem "rails_12factor"
 
+gem "ranked-model"
+
 gem 'resque', require: 'resque/server'
 
 gem 'resque_mailer'
