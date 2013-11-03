@@ -21,6 +21,7 @@ class EpisodesController < ApplicationController
       link: @link,
       sc_id: @sc_id,
       duration: @sc_track['duration'],
+      keywords: @sc_track["tag_list"],
     )
 
     if @episode
