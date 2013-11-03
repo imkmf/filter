@@ -28,6 +28,11 @@ class SubscriptionsController < ApplicationController
       reactivate
     else
       @coupon = params[:coupon] || nil
+      if params[:coupon].nil?
+        @coupon = nil
+      else
+        @coupon = params[:coupon]
+      end
       @customer = Stripe::Customer.create(
         email: current_user.email,
         card:  params[:stripeToken],
