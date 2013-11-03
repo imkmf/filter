@@ -6,6 +6,7 @@
   <% end %>
   <li class="<%= 'active' if current_page?(help_path) %>"><%= link_to "Help", help_path %></li>
   <% if current_user %>
+    <%= render "shared/episodes" %>
     <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>"><%= link_to "Account", edit_user_path(current_user) %></li>
     <% unless current_user.subscribed %>
       <li class="<%= 'active' if current_page?(new_subscription_path) %>"><%= link_to "Upgrade", new_subscription_path %></li>

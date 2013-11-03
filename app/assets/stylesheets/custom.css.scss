@@ -36,3 +36,10 @@ i.icon {
 .select3 {
   width: 20em;
 }
+
+li.active {
+  span.caret {
+    border-top-color: white;
+    border-bottom-color: white;
+  }
+}
