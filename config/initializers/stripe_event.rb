@@ -1,7 +1,7 @@
 if Rails.env.development?
-  Stripe.api_key = Figaro.env.stripe_secret
+  Stripe.api_key = ENV["STRIPE_SECRET"]
 else
-  Stripe.api_key = Figaro.env.stripe_key_secret_production
+  Stripe.api_key = ENV["STRIPE_KEY_SECRET_PRODUCTION"]
 end
 
 StripeEvent.setup do

@@ -9,8 +9,11 @@ class ToAmazon
   end
 
   def save
-    amazon = S3::Service.new(access_key_id: Figaro.env.access_key_id, secret_access_key: Figaro.env.access_key_secret)
-    bucket = amazon.buckets.find(Figaro.env.aws_bucket)
+    amazon = S3::Service.new(
+      access_key_id: ENV["ACCESS_KEY_ID"],
+      secret_access_key: ENV["ACCESS_KEY_SECRET"]
+    )
+    bucket = amazon.buckets.find(ENV["AWS_BUCKET"])
     new_file = bucket.objects.build(@name)
     if @file.is_a? String
       new_file.content = @file

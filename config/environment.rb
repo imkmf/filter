@@ -5,8 +5,8 @@ require File.expand_path('../application', __FILE__)
 Filter::Application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  user_name: Figaro.env.mandrill_user,
-  password: Figaro.env.mandrill_pass,
+  user_name: ENV["MANDRILL_USER"],
+  password: ENV["MANDRILL_PASS"],
   domain: 'usefilter.com',
   address: 'smtp.mandrillapp.com',
   port: 587,

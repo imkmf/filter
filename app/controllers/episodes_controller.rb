@@ -13,7 +13,7 @@ class EpisodesController < ApplicationController
     @sc_id = params[:sc_id]
     @sc_track = api.track(@sc_id)
     @cover ||= @sc_track['artwork_url']
-    @link = "#{ @sc_track['download_url'] }?client_id=#{ Figaro.env.soundcloud_key }&oauth_token=#{ @podcast.user.token }"
+    @link = "#{ @sc_track['download_url'] }?client_id=#{ ENV["SOUNDCLOUD_KEY"] }&oauth_token=#{ @podcast.user.token }"
     @episode = @podcast.episodes.build(
       name: @sc_track['title'],
       description: @sc_track['description'],

@@ -45,7 +45,7 @@ class PodcastJobUtils
         if @sc_track['original_format'] == 'mp3' && @sc_track['sharing'] == 'public'
           puts "Found #{ @sc_track['title'] }. Adding..."
           @cover = @sc_track['artwork_url']
-          @link = "#{ @sc_track['download_url'] }?client_id=#{ Figaro.env.soundcloud_key }&oauth_token=#{ @user.token }"
+          @link = "#{ @sc_track['download_url'] }?client_id=#{ ENV["SOUNDCLOUD_KEY"] }&oauth_token=#{ @user.token }"
           @episode = @user.podcast.episodes.create(
             name: @sc_track['title'],
             description: @sc_track['description'],
