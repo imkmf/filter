@@ -22,3 +22,5 @@
 # Paperclip uploads
 public/system
 .DS_Store
+
+.env

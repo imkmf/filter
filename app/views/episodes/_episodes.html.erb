@@ -4,6 +4,8 @@
 <% else %>
   <h2>Episodes:</h2>
 
+  <p><small>Drag episodes to reorder.</small></p>
+
   <div id="sortable">
     <% @episodes.each do |episode| %>
       <div class="well episode" data-item_id="<%= episode.id %>">

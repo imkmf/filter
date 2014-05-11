@@ -16,8 +16,3 @@ auto_update:
   args:
   description: Update podcasts for pro users
 
-librato_measurements:
-  every: 6h
-  class: LibratoMeasurementsJob
-  args:
-  description: Send measurements to Librato

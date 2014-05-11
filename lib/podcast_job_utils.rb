@@ -26,6 +26,7 @@ class PodcastJobUtils
     itunes_file.podcast_information
 
     podcast.episodes.each do |episode|
+      next if episode.link.include?("api.soundcloud.com/tracks")
       puts "Adding #{ episode }."
       itunes_file.add_episode(episode)
     end

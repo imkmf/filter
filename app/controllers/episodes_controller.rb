@@ -9,12 +9,12 @@ class EpisodesController < ApplicationController
     @soundcloud_episodes = api.user_tracks(current_user.uid, limit: current_user.limit, filter: 'downloadable')
   end
 
-  def new
+  def create
     @sc_id = params[:sc_id]
     @sc_track = api.track(@sc_id)
     @cover ||= @sc_track['artwork_url']
     @link = "#{ @sc_track['download_url'] }?client_id=#{ Figaro.env.soundcloud_key }&oauth_token=#{ @podcast.user.token }"
-    @episode = @podcast.episodes.create(
+    @episode = @podcast.episodes.build(
       name: @sc_track['title'],
       description: @sc_track['description'],
       cover: @cover,
@@ -24,7 +24,7 @@ class EpisodesController < ApplicationController
       keywords: @sc_track["tag_list"],
     )
 
-    if @episode
+    if @episode.save
       redirect_to episodes_path, notice: "#{ @episode.name } has been added to your podcast."
     end
   end

@@ -18,6 +18,8 @@ gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git'
 
 gem 'coffee-rails', '~> 4.0.0'
 
+gem 'dotenv-rails'
+
 gem 'figaro'
 
 gem 'font-awesome-rails'
@@ -29,8 +31,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 
 gem 'language_list'
-
-gem "librato-rails"
 
 gem "mechanize"
 
