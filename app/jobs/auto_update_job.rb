@@ -6,7 +6,10 @@ module AutoUpdateJob
       @podcasts = Podcast.all
       @podcasts.each do |podcast|
         puts "Processing #{ podcast.name }."
-        PodcastJobUtils.new(podcast.id).auto_update
+        user = podcast.user
+        if user.subscribed?
+          PodcastJobUtils.new(podcast.id).auto_update
+        end
       end
     end
   end

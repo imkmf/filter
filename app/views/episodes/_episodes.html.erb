@@ -10,7 +10,7 @@
     <% @episodes.each do |episode| %>
       <div class="well episode" data-item_id="<%= episode.id %>">
         <h4><%= link_to episode.name, episode_path(episode) %></h4>
-        <p><%= episode.description %></p>
+        <p><%= simple_format episode.description %></p>
         <p><%= image_tag episode.cover %></p>
         <% unless episode.needs_download == false %>
           <p>We are currently downloading this episode from Soundcloud.</p>

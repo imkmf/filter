@@ -7,6 +7,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rspec'
   gem 'pry'
+  gem 'pry-byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'

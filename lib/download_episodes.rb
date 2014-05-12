@@ -8,7 +8,7 @@ class DownloadEpisodes
 
   def download
     @api = Soundcloud::API.new(@episode.podcast.user.token)
-    link = @api.track(@episode.sc_id)["download_url"]
+    link = @api.track(@episode.sc_id)["download_url"] + "?client_id=#{ENV["SOUNDCLOUD_KEY"]}"
     agent = Mechanize.new
     new_link = agent.head(link).uri.to_s
     new_link = CGI.escapeHTML(new_link)
