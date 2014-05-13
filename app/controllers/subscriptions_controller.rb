@@ -1,3 +1,5 @@
+require "retrieved_coupon"
+
 class SubscriptionsController < ApplicationController
   before_filter :authenticate_user!
 
@@ -20,26 +22,36 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def validate_coupon
+    if params[:coupon]
+      begin
+        @retrieved_coupon = Stripe::Coupon.retrieve(params[:coupon])
+        @coupon = RetrievedCoupon.new(@retrieved_coupon)
+      rescue Stripe::InvalidRequestError => e
+        @coupon = nil
+      end
+      if @coupon
+        resp = { response: @coupon.text, new_price: @coupon.new_price }
+        render json: resp, status: :ok
+      else
+        resp = { response: '' }
+        render json: resp, status: :ok
+      end
+    end
+  end
+
   def create
     # Amount in cents
-    @amount = 800
-
     if current_user.stripe_token
       reactivate
     else
-      @coupon = params[:coupon] || nil
-      if params[:coupon].nil?
-        @coupon = nil
-      else
-        @coupon = params[:coupon]
-      end
       @customer = Stripe::Customer.create(
         email: current_user.email,
         card:  params[:stripeToken],
         plan:  1,
-        coupon: @coupon,
+        coupon: params[:coupon],
       )
-      @trial_end = @customer.subscription.current_period_end
+      @trial_end = @customer.subscriptions.first.current_period_end
       current_user.update(subscribed: true, subscribed_at: Time.current, trial_ends_at: @trial_end, stripe_token: @customer.id)
       redirect_to my_podcast_path, notice: "Your account has been upgraded! Thanks for using Filter!"
     end

@@ -14,6 +14,7 @@ Filter::Application.routes.draw do
   get "/my_podcast/publish", to: "podcasts#publish", as: "publish_podcast"
   post "/users/remove_card", to: "subscriptions#remove_card", as: "remove_card"
   post "/subscriptions/reactivate", to: "subscriptions#reactivate", as: "reactivate_subscription"
+  post "/subscriptions/validate_coupon", to: "subscriptions#validate_coupon", as: "validate_coupon"
   post "episodes/blacklist", to: "episodes#blacklist", as: "blacklist_episode"
   mount Resque::Server, :at => "/resque" if Rails.env.development?
   mount StripeEvent::Engine => "/stripe_events"

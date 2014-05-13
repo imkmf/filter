@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
   has_one :blacklist
   has_many :episodes, through: :podcast
   attr_accessor :limit
-  after_create :new_user
-  after_save :becomes_subscribed
 
   def to_s
     "#{ name }"
@@ -34,15 +32,5 @@ class User < ActiveRecord::Base
 
   def in_trial_period?
     Time.current < self.trial_ends_at
-  end
-
-  def new_user
-    Librato.increment "user_signups"
-  end
-
-  def becomes_subscribed
-    if self.subscribed && self.subscribed_changed?
-      Librato.increment "user_subscription"
-    end
   end
 end

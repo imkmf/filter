@@ -1,0 +1,50 @@
+$ ->
+  $amount = 800
+  typingTimer = null
+  doneTypingInterval = 1500
+
+  $('.coupon-field').keyup ->
+    clearTimeout(typingTimer)
+    typingTimer = setTimeout(doneTyping, doneTypingInterval)
+
+    if !$(this).val()
+      $("#stripe").removeClass('disabled')
+      $("#stripe").prop('disabled', false)
+      $(".price p").html("<p></p>")
+
+  $('.coupon-field').keydown ->
+    if !!$(this).val()
+      $("#stripe").addClass('disabled')
+      $("#stripe").prop('disabled', true)
+      clearTimeout(typingTimer)
+
+  handler = StripeCheckout.configure
+    key: "<%= ENV["STRIPE_KEY"] %>",
+    image: 'http://i.imgur.com/v1RWKkl.png',
+    token: (token, args) ->
+      $("#stripe_token").val(token.id)
+      $("form").submit()
+
+  $('#stripe').click ->
+    handler.open
+      name: 'Filter',
+      description: 'Unlimited plan to Filter',
+      amount: $amount
+
+  doneTyping = ->
+    NProgress.start()
+    val = $(".coupon-field").val()
+    if !!val
+      $.post(
+        '/subscriptions/validate_coupon'
+        { coupon: val }
+      ).done (data) ->
+        response = data.response
+        if !!response
+          $(".price p").html("<p><strong>#{response}</strong></p>")
+          $("#stripe").removeClass('disabled')
+          $("#stripe").prop('disabled', false)
+          $amount = data.new_price if !!data.new_price
+        else
+          $(".price p").html("<p><strong>This coupon code is incorrect.</strong></p>")
+      NProgress.done()
