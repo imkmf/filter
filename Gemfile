@@ -16,6 +16,7 @@ end
 
 gem 'aws-sdk'
 gem 'bootstrap-sass', git: 'git://github.com/thomas-mcdonald/bootstrap-sass.git'
+gem 'capistrano'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'dotenv-rails'
 gem 'font-awesome-rails'
@@ -36,6 +37,7 @@ gem 'resque', require: 'resque/server'
 gem 'resque_mailer'
 gem 'resque-scheduler', require: 'resque_scheduler'
 gem 'rspec-rails', group: [:development, :test]
+gem 'rvm-capistrano'
 gem 's3'
 gem 'select2-rails', branch: '3'
 gem 'shoulda-matchers', group: :test
@@ -45,3 +47,4 @@ gem "stripe_event"
 gem 'simple_form'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'unicorn'

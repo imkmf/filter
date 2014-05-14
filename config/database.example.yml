@@ -1,0 +1,14 @@
+development: &db
+  adapter: postgresql
+  host: localhost
+  database: filter_dev
+
+test:
+  <<: *db
+  database: filter_test
+
+production:
+  <<: *db
+  user: rails
+  password: blah123!
+  database: filter
