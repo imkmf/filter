@@ -24,3 +24,5 @@ public/system
 .DS_Store
 
 .env
+
+config/database.yml
