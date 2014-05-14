@@ -13,7 +13,7 @@ set :use_sudo, false
 
 set :scm, "git"
 set :repository, "git@github.com:imkmf/#{application}.git"
-set :branch, "master"
+set :branch, "origin/master"
 
 set :migrate_target,  :current
 set :normalize_asset_timestamps, false
