@@ -23,7 +23,7 @@ class ItunesFeeder
     channel.link = @podcast.website
     channel.language = @podcast.short_lang
     channel.copyright = @podcast.copyright
-    channel.image = RSS::Rss::Channel::Image.new
+    channel.image = RSS::Rss::Channel::Image.new(@podcast.cover.url)
     channel.image.title = channel.title
     channel.image.url = channel.link
     channel.image.link = channel.link
@@ -33,7 +33,7 @@ class ItunesFeeder
     channel.itunes_owner.itunes_email = @podcast.user.email
     channel.itunes_subtitle = @podcast.subtitle
     channel.itunes_summary = @podcast.summary
-    @itunes_image = RSS::ITunesChannelModel::ITunesImage.new(@podcast.cover_url)
+    @itunes_image = RSS::ITunesChannelModel::ITunesImage.new(@podcast.cover.url)
     channel.itunes_image = @itunes_image
     channel.itunes_explicit = @podcast.explicit
     return channel

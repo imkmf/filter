@@ -22,7 +22,7 @@ class PodcastJobUtils
   end
 
   def process_podcast
-    auto_update(podcast.user) if podcast.user.subscribed?
+    auto_update if podcast.user.subscribed?
     itunes_file.podcast_information
 
     podcast.episodes.each do |episode|

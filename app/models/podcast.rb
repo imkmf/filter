@@ -22,11 +22,6 @@ class Podcast < ActiveRecord::Base
     language[0..2]
   end
 
-  def cover_url
-    Rails.root.join(cover.url)
-  end
-
   def title; name end
   def link; website end
-
 end

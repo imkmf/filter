@@ -12,4 +12,14 @@ class FilterMailer < ActionMailer::Base
     @user = user
     mail(to: @user.email, subject: "You successfully signed up for Filter Pro!")
   end
+
+  def new_subscription(user)
+    @user = user
+    mail(to: @user.email, subject: "Your free trial ends soon!")
+  end
+
+  def bad_payment(user)
+    @user = user
+    mail(to: @user.email, subject: "We had some problems with your payment...")
+  end
 end
