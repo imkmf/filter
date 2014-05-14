@@ -96,7 +96,7 @@ namespace :deploy do
 
   desc "Zero-downtime restart of Unicorn"
   task :restart, :except => { :no_release => true } do
-    run "kill -s USR2 `cat #{current_path}/tmp/pids/unicorn.my_site.pid`"
+    run "kill -s USR2 `cat #{current_path}/tmp/pids/unicorn.pid`"
   end
 
   desc "Start unicorn"
@@ -106,7 +106,7 @@ namespace :deploy do
 
   desc "Stop unicorn"
   task :stop, :except => { :no_release => true } do
-    run "kill -s QUIT `cat #{current_path}/tmp/pids/unicorn.my_site.pid`"
+    run "kill -s QUIT `cat #{current_path}/tmp/pids/unicorn.pid`"
   end
 
   task :symlink_config, roles: :app do
