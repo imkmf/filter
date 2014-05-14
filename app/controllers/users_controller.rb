@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     cookies['not_new'] = ''
     if @user.stripe_token
       @customer = Stripe::Customer.retrieve(@user.stripe_token)
-      @subscription = @customer.subscription
+      @subscription = @customer.subscriptions.first
       if @subscription
         @end_time = DateTime.strptime(@subscription.current_period_end.to_s, "%s")
       end

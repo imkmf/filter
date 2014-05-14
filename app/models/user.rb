@@ -16,10 +16,8 @@ class User < ActiveRecord::Base
       user = User.create name: info["name"], provider: provider, uid: uid, avatar_url: info["image"], token: auth_hash["credentials"]["token"]
       blacklist = user.create_blacklist
       user.update_attribute :blacklist, blacklist
-      user
-    else
-      user
     end
+    user
   end
 
   def limit
@@ -28,6 +26,15 @@ class User < ActiveRecord::Base
     else
       5
     end
+  end
+
+  def unsubscribe!
+    update(
+      subscribed: false,
+      trial_ends_at: nil,
+      subscribed_at: nil,
+      stripe_token: nil
+    )
   end
 
   def in_trial_period?

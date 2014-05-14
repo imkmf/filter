@@ -45,7 +45,7 @@
   <% else %>
     <em>Free</em></h3>
     <% if @user.stripe_token %>
-      <%= button_to "Reactivate your account", reactivate_subscription_path, class: "btn btn-primary" %>
+      <%= link_to "Reactivate your account", new_subscription_path, class: "btn btn-primary" %>
     <% else %>
       <%= link_to "Upgrade your account", new_subscription_path, class: "btn btn-primary" %>
     <% end %>

@@ -47,12 +47,19 @@ class SubscriptionsController < ApplicationController
     else
       @customer = Stripe::Customer.create(
         email: current_user.email,
-        card:  params[:stripeToken],
+        card:  params[:stripe_token],
         plan:  1,
         coupon: params[:coupon],
       )
-      @trial_end = @customer.subscriptions.first.current_period_end
-      current_user.update(subscribed: true, subscribed_at: Time.current, trial_ends_at: @trial_end, stripe_token: @customer.id)
+      @subscription = @customer.subscriptions.first
+      @subscribed_at = parse_stripe_time(@subscription.start)
+      @trial_end = parse_stripe_time(@subscription.current_period_end)
+      current_user.update(
+        subscribed: true,
+        subscribed_at: @subscribed_at,
+        trial_ends_at: @trial_end,
+        stripe_token: @customer.id
+      )
       redirect_to my_podcast_path, notice: "Your account has been upgraded! Thanks for using Filter!"
     end
 
@@ -65,5 +72,10 @@ class SubscriptionsController < ApplicationController
     @customer.cancel_subscription
     current_user.update(subscribed: false)
     redirect_to my_podcast_path, alert: "Your subscription has been canceled. Thanks for using Filter!"
+  end
+
+  private
+  def parse_stripe_time(time)
+    DateTime.strptime(time.to_s, '%s')
   end
 end

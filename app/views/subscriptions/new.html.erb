@@ -8,12 +8,13 @@
 <h2>Subscribe and try Filter for a week, free of charge.</h2>
 
 <% if current_user.stripe_token %>
-  <%= button_to "Reactivate Filter Subscription", reactivate_subscription_path, class: 'btn btn-primary' %>
-  <br />
   <p>Our records show that you have previously had a Filter account.</p>
   <p>Using the above form will resubscribe with your previous account information.
   If you would like to change your credit card information, please
-  <%= link_to "contact us", page_path('help') %>.
+  <%= link_to "contact us", help_path %>.</p>
+  <%= button_to reactivate_subscription_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-credit-card"></span> Reactivate Filter Subscription
+  <% end %>
 <% else %>
   <%= form_tag subscriptions_path do %>
     <div class="form-group price">
