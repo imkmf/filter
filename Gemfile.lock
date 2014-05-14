@@ -326,6 +326,7 @@ DEPENDENCIES
   bootstrap-sass!
   capistrano
   coffee-rails (~> 4.0.0)
+  dotenv-deployment
   dotenv-rails
   font-awesome-rails
   google-analytics-rails
