@@ -1,7 +1,8 @@
 require 'resque_scheduler'
 require 'resque_scheduler/server'
 
-Resque.redis = 'localhost:6379'
+uri = URI.parse(ENV["REDISTOGO_URL"] || ENV["REDIS_URL"])
+Resque.redis = uri
 Resque.redis.namespace = "resque:filter"
 
 # If you want to be able to dynamically change the schedule,
