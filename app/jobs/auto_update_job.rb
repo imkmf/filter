@@ -1,4 +1,5 @@
 module AutoUpdateJob
+  extend HerokuResqueAutoScale if Rails.env.production? # only extend in production
   @queue = :filter_queue
 
   class << self

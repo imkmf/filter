@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'dotenv-rails'
 gem 'font-awesome-rails'
 gem "google-analytics-rails"
+gem 'heroku-resque-auto-scale', github: 'markquezada/heroku-resque-auto-scale'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'language_list'

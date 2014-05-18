@@ -5,7 +5,7 @@ generate_podcasts:
   description: Generate Podcast XML File
 
 download_episodes:
-  every: 5m
+  every: 1h
   class: DownloadEpisodesJob
   args:
   description: Download episodes to S3
